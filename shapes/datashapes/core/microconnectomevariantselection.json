@@ -1,0 +1,24 @@
+{
+    "@context": [
+      "https://incf.github.io/neuroshapes/contexts/schema.json"
+    ],
+    "@id": "https://neuroshapes.org/dash/connectomevariantselection",
+    "@type": "Schema",
+    "imports": [
+        "nsg:commons/minds"
+      ],
+    "shapes": [
+      {
+        "@id": "https://neuroshapes.org/dash/cellcomposition/shapes/ConnectomeVariantSelectionShape",
+        "@type": "NodeShape",
+          "and": [
+            {
+              "node": "nsg:commons/minds/shapes/MINDSShape"
+            }
+        ],
+        "label": "ConnectomeVariantSelection shape definition",
+        "nodeKind": "sh:BlankNodeOrIRI",
+        "targetClass": "bmo:ConnectomeVariantSelection"
+      }
+    ]
+  }

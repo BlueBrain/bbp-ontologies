@@ -1,0 +1,48 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/apicalannotation/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/apicalannotation",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/activity"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/morphology/src/main/resources/schemas/neurosciencegraph/morphology/apicalannotation/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/apicalannotation/shapes/ApicalAnnotationShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/activity/shapes/ActivityShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:ReconstructedWholeBrainCell",
+              "description": "The original whole brain cell",
+              "maxCount": 1,
+              "minCount": 1,
+              "path": "prov:used",
+              "seeAlso": "nsg:dash/reconstructedwholebraincell/shapes/ReconstructedWholeBrainCellShape"
+            },
+            {
+              "class": "nsg:ReconstructedWholeBrainCell",
+              "description": "The whole brain cell with apical annotated",
+              "maxCount": 1,
+              "minCount": 1,
+              "path": "prov:generated",
+              "seeAlso": "nsg:dash/reconstructedwholebraincell/shapes/ReconstructedWholeBrainCellShape"
+            }
+          ]
+        }
+      ],
+      "label": "Apical annotation shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:ApicalAnnotation"
+    }
+  ]
+}

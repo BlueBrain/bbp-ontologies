@@ -1,0 +1,77 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/simulation/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/simulation",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/activity",
+    "nsg:commons/typedlabeledontologyterm"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/simulation/v0.2.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/simulation/shapes/SimulationShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/activity/shapes/ActivityShape"
+        },
+        {
+          "property": [
+            {
+              "minCount": 2,
+              "path": "prov:used"
+            },
+            {
+              "description": "Used model.",
+              "name": "Model",
+              "path": "prov:used",
+              "qualifiedMaxCount": 1,
+              "qualifiedMinCount": 1,
+              "qualifiedValueShape": {
+                "class": "nsg:ModelInstance"
+              },
+              "qualifiedValueShapesDisjoint": true,
+              "seeAlso": "nsg:dash/modelinstance/shapes/ModelInstanceShape"
+            },
+            {
+              "description": "Used configuration.",
+              "name": "Configuration",
+              "path": "prov:used",
+              "qualifiedMaxCount": 1,
+              "qualifiedMinCount": 1,
+              "qualifiedValueShape": {
+                "class": "nsg:Configuration"
+              },
+              "qualifiedValueShapesDisjoint": true,
+              "seeAlso": "nsg:commons/entity/shapes/EntityShape"
+            },
+            {
+              "datatype": "nsg:SimulationStatus",
+              "description": "Simulation status.",
+              "minCount": 1,
+              "name": "Status",
+              "path": "nsg:status",
+              "seeAlso": "nsg:commons/typedlabeledontologyterm/shapes/ModelSimulationStatusOntologyTermShape"
+            },
+            {
+              "class": "nsg:VariableReport",
+              "description": "Generated variable report (file attached (bbp, h5, nwb), variable name, target taken from (to be controlled) [compartment, soma, summation, extra cellular recording])),",
+              "minCount": 1,
+              "name": "Generated report",
+              "path": "prov:generated",
+              "seeAlso": "nsg:dash/variablereport/shapes/VariableReportShape"
+            }
+          ]
+        }
+      ],
+      "comment": "Query: Get all simulation that generates a voltage trace layer 5",
+      "label": "Model simulation activity shape",
+      "targetClass": "nsg:Simulation"
+    }
+  ]
+}

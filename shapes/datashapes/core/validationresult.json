@@ -1,0 +1,75 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/validationresult/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/validationresult",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/validationresult/v0.1.1.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/validationresult/shapes/ValidationResultShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Validation score.",
+              "editorialNote": "Is this a QuantitativeValue (with unit) ?",
+              "minCount": 1,
+              "name": "Score",
+              "or": [
+                {
+                  "datatype": "xsd:float"
+                },
+                {
+                  "datatype": "xsd:decimal"
+                },
+                {
+                  "datatype": "xsd:double"
+                }
+              ],
+              "path": "nsg:score"
+            },
+            {
+              "description": "Validation normalized score (e.g. in [0, 1]).",
+              "editorialNote": "Is this a QuantitativeValue (with unit) ?",
+              "minCount": 1,
+              "name": "Normalized score",
+              "or": [
+                {
+                  "datatype": "xsd:float"
+                },
+                {
+                  "datatype": "xsd:decimal"
+                },
+                {
+                  "datatype": "xsd:double"
+                }
+              ],
+              "path": "nsg:normalizedScore"
+            },
+            {
+              "class": "prov:Entity",
+              "description": "Additional data produced like figures.",
+              "name": "Member",
+              "path": "prov:hadMember",
+              "seeAlso": "nsg:commons/entity/shapes/EntityShape"
+            }
+          ]
+        }
+      ],
+      "comment": "The model or simulation report analysis result shape.",
+      "label": "Model or simulation report analysis result shape",
+      "targetClass": "nsg:ValidationResult"
+    }
+  ]
+}

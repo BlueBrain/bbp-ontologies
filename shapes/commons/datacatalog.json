@@ -1,0 +1,30 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/commons/datacatalog",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/commons/datacatalog/shapes/DataCatalogShape",
+      "@type": "NodeShape",
+      "description": "Data Catalog",
+      "nodeKind": "sh:IRI",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "path": "schema:about",
+              "minCount": 1,
+              "maxCount": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

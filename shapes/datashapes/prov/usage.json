@@ -1,0 +1,23 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://provshapes.org/dash/usage/shapes/"
+    }
+  ],
+  "@id": "https://provshapes.org/dash/usage",
+  "@type": "Schema",
+  "imports": [
+    "https://provshapes.org/commons/usage"
+  ],
+  "shapes": [
+    {
+      "@id": "https://provshapes.org/dash/usage/shapes/UsageShape",
+      "@type": "NodeShape",
+      "comment": "Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity.",
+      "label": "Usage shape",
+      "node": "https://provshapes.org/commons/usage/shapes/UsageShape",
+      "targetClass": "prov:Usage"
+    }
+  ]
+}

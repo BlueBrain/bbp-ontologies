@@ -1,0 +1,47 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/subjectcollection/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/subjectcollection",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/collection",
+    "nsg:commons/typedlabeledontologyterm"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/subjectcollection/v0.1.1.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/subjectcollection/shapes/SubjectCollectionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/collection/shapes/CollectionShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The species of this collection members",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Species",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/SpeciesOntologyTermShape",
+              "path": "nsg:species"
+            },
+            {
+              "class": "nsg:Subject",
+              "description": "The subject (s) that are member of the collection.",
+              "name": "Member",
+              "path": "prov:hadMember",
+              "seeAlso": "nsg:dash/subject/shapes/SubjectShape"
+            }
+          ]
+        }
+      ],
+      "comment": "All subjects in the collection should be of the same species.",
+      "label": "Subject Collection"
+    }
+  ]
+}

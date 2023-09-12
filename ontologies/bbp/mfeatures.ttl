@@ -1,0 +1,582 @@
+@prefix : <https://bbp.epfl.ch/ontologies/core/mfeatures/> .
+@prefix GO: <http://purl.obolibrary.org/obo/GO_> .
+@prefix RS: <http://purl.obolibrary.org/obo/RS_> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix et: <https://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/> .
+@prefix mt: <https://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix EFO: <http://www.ebi.ac.uk/efo/EFO_> .
+@prefix bmc: <https://bbp.epfl.ch/ontologies/core/bmc/> .
+@prefix bmo: <https://bbp.epfl.ch/ontologies/core/bmo/> .
+@prefix efe: <https://bbp.epfl.ch/ontologies/core/efeatures/> .
+@prefix ilx: <http://uri.interlex.org/base/ilx_> .
+@prefix mso: <https://bbp.epfl.ch/ontologies/core/molecular-systems/> .
+@prefix nsg: <https://neuroshapes.org/> .
+@prefix nxv: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix stim: <https://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix schema: <http://schema.org/> .
+@prefix uberon: <http://purl.obolibrary.org/obo/UBERON_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix datashapes: <https://neuroshapes.org/dash/> .
+@prefix commonshapes: <https://neuroshapes.org/commons/> .
+@prefix NCBITaxon_TAXON: <http://purl.obolibrary.org/obo/NCBITaxon#_> .
+@base <https://bbp.epfl.ch/ontologies/core/mfeatures> .
+
+<https://bbp.epfl.ch/ontologies/core/mfeatures> rdf:type owl:Ontology ;
+                                                rdfs:label "Neuron Morphological Feature Ontology"^^xsd:string  ;
+                                                owl:versionInfo "R209"^^xsd:string .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/neurom_namespace
+<https://bbp.epfl.ch/ontologies/core/efeatures/neurom_namespace> rdf:type owl:AnnotationProperty .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id
+<https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> rdf:type owl:AnnotationProperty ;
+                                                          rdfs:label "neurom_id"@en .
+
+
+###  https://neuroshapes.org/units
+nsg:units rdf:type owl:AnnotationProperty ;
+          rdfs:label "units"@en .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://neuroshapes.org/hasFeature
+nsg:hasFeature rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty  ;
+               rdfs:label "hasFeature"@en .
+
+
+###  https://neuroshapes.org/isFeatureOf
+nsg:isFeatureOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty  ;
+                rdfs:label "isFeatureOf"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature
+<https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> rdf:type owl:Class ;
+                                                                     rdfs:label "Neuron Morphological Feature"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/Soma
+<https://bbp.epfl.ch/ontologies/core/bmo/Soma> rdf:type owl:Class ;
+                                               rdfs:subClassOf owl:Thing ;
+                                               rdfs:label "Soma"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/efeatures/MorphologyMaxRadialDistance
+<https://bbp.epfl.ch/ontologies/core/efeatures/MorphologyMaxRadialDistance> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyFeature> ;
+                                                                            rdfs:label "Morphology Max Radial Distance" ;
+                                                                            <http://www.w3.org/2004/02/skos/core#definition> "Maximum radial distances of the termination sections."^^xsd:string ;
+                                                                            <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "max_radial_distance" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/DiameterPowerRelations
+<https://bbp.epfl.ch/ontologies/core/mfeatures/DiameterPowerRelations> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                       rdfs:label "Diameter Power Relations"@en ;
+                                                                       <http://www.w3.org/2004/02/skos/core#definition> "Diameter power relation at a bf point. This quantity gives an indication of how far the branching is from the Rall ratio (when =1)."^^xsd:string ;
+                                                                       <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "diameter_power_relations"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/LocalBifurcationAngles
+<https://bbp.epfl.ch/ontologies/core/mfeatures/LocalBifurcationAngles> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                       rdfs:label "Local Bifurcation Angles"@en ;
+                                                                       <http://www.w3.org/2004/02/skos/core#definition> "Local bifurcation angles"^^xsd:string ;
+                                                                       <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "local_bifurcation_angles"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyEndPoint
+<https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyEndPoint> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyPoint> ;
+                                                                   rdfs:label "Morphology End Point"@en ;
+                                                                   <http://www.w3.org/2004/02/skos/core#definition> "End point is the last point of a section without children."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyFeature
+<https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyFeature> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ;
+                                                                  rdfs:label "Morphology Feature"@en ;
+                                                                  <https://bbp.epfl.ch/ontologies/core/efeatures/neurom_namespace> "neurom.features.morphology" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyForkingPoint
+<https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyForkingPoint> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyPoint> ;
+                                                                       rdfs:label "Morphology Forking Point"@en ;
+                                                                       <http://www.w3.org/2004/02/skos/core#definition> "Forking point is the last point of a section that has multiple children."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyPoint
+<https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyPoint> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyUnit> ;
+                                                                rdfs:label "Morphology Point"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#definition> "A morphology point is an array of three numbers [X, Y, Z] where X, Y, Z are Cartesian coordinates of position. A morphology point always has a diameter associated with it."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyStartingPoint
+<https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyStartingPoint> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyPoint> ;
+                                                                        rdfs:label "Morphology Starting Point"@en ;
+                                                                        <http://www.w3.org/2004/02/skos/core#definition> "Starting point is the first point of a section without parent inside the section."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyUnit
+<https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyUnit> rdf:type owl:Class ;
+                                                               rdfs:label "Morphology Unit"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/Neurite
+<https://bbp.epfl.ch/ontologies/core/mfeatures/Neurite> rdf:type owl:Class ;
+                                                        rdfs:subClassOf owl:Thing ;
+                                                        rdfs:label "Neurite"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteFeature
+bmo:NeuriteFeature rdf:type owl:Class ;
+                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/NeuronMorphologicalFeature> ,
+                   [ rdf:type owl:Restriction ;
+                        owl:onProperty <https://bbp.epfl.ch/ontologies/core/mfeatures/isFeatureOf> ;
+                        owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/mfeatures/Neurite>
+                   ] ;
+                   rdfs:label "Neurite Feature"@en ;
+                   <https://bbp.epfl.ch/ontologies/core/efeatures/neurom_namespace> "neurom.features.neurite" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteMaxRadialDistance
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteMaxRadialDistance> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                         rdfs:label "Neurite Max Radial Distance" ;
+                                                                         <http://www.w3.org/2004/02/skos/core#definition> "Maximum radial distances of the termination sections." ;
+                                                                         <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "max_radial_distance" .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalArea
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalArea> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                 rdfs:label "Neurite Total Area"@en ;
+                                                                 <http://www.w3.org/2004/02/skos/core#definition> "Neurite surface area. For a morphology it will be a sum of all neurite areas. The area is defined as the sum of the area of the sections."^^xsd:string ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "total_area"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalDepth
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalDepth> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                  rdfs:label "Neurite Total Depth"@en ;
+                                                                  <http://www.w3.org/2004/02/skos/core#definition> "Neurite depth. For a morphology it will be the maximum of neurites depths."^^xsd:string ;
+                                                                  <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "total_depth"^^xsd:string ;
+                                                                  nsg:units "μm"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalHeight
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalHeight> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                   rdfs:label "Neurite Total Height"@en ;
+                                                                   <http://www.w3.org/2004/02/skos/core#definition> "Neurite total height. For a morphology it will be the maximum of neurites height."^^xsd:string ;
+                                                                   <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "total_height"^^xsd:string ;
+                                                                   nsg:units "μm"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalLength
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalLength> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                   rdfs:label "Neurite Total Length"@en ;
+                                                                   <http://www.w3.org/2004/02/skos/core#definition> "Neurite length. For a morphology it will be a sum of all neurite lengths."^^xsd:string ;
+                                                                   <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "total_length"^^xsd:string ;
+                                                                   nsg:units "μm"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalVolume
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalVolume> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                   rdfs:label "Neurite Total Volume"@en ;
+                                                                   <http://www.w3.org/2004/02/skos/core#definition> "Neurite volume. For a morphology it will be a sum of neurites volumes."^^xsd:string ;
+                                                                   <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "total_volume"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalWidth
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteTotalWidth> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                  rdfs:label "Neurite Total Width"@en ;
+                                                                  <http://www.w3.org/2004/02/skos/core#definition> "Neurite total width. For a morphology it will be the maximum of neurites widths ."^^xsd:string ;
+                                                                  <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "total_width"^^xsd:string ;
+                                                                  nsg:units "μm"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteVolumeDensity
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NeuriteVolumeDensity> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                     rdfs:label "Neurite Volume Density"@en ;
+                                                                     <http://www.w3.org/2004/02/skos/core#definition> "Neurite volume density. For a morphology it will be the mean of neurites volume densities."^^xsd:string ;
+                                                                     <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "volume_density"^^xsd:string ;
+                                                                     nsg:units "dendritic volume / hull volume"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfBifurcations
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfBifurcations> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                     rdfs:label "Number of Bifurcations"^^xsd:string ;
+                                                                     <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "number_of_bifurcations"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfForkingPoints
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfForkingPoints> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                      rdfs:label "Number of Forking Points"@en ;
+                                                                      <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "number_of_forking_points"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfLeaves
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfLeaves> rdf:type owl:Class ;
+                                                               rdfs:subClassOf bmo:NeuriteFeature ;
+                                                               rdfs:label "Number Of Leaves"@en ;
+                                                               <http://www.w3.org/2004/02/skos/core#definition> "Number of leaves points."^^xsd:string ;
+                                                               <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "number_of_leaves"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfNeurites
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfNeurites> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyFeature> ;
+                                                                 rdfs:label "Number Of Neurites"@en ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "number_of_neurites"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfSections
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfSections> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                 rdfs:label "Number of Sections"@en ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "number_of_sections"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfSectionsPerNeurite
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfSectionsPerNeurite> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyFeature> ;
+                                                                           rdfs:label "Number Of Sections Per Neurite"@en ;
+                                                                           <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "number_of_sections_per_neurite"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfSegments
+<https://bbp.epfl.ch/ontologies/core/mfeatures/NumberOfSegments> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                 rdfs:label "Number of Segments"@en ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "number_of_segments"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/PartitionAsymmetry
+<https://bbp.epfl.ch/ontologies/core/mfeatures/PartitionAsymmetry> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                   rdfs:label "Partition Asymmetry"@en ;
+                                                                   <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "partition_asymmetry"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/PartitionAsymmetryLength
+<https://bbp.epfl.ch/ontologies/core/mfeatures/PartitionAsymmetryLength> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                         rdfs:label "Partition Asymmetry Length"@en ;
+                                                                         <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "partition_asymmetry_length"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/PartitionPairs
+<https://bbp.epfl.ch/ontologies/core/mfeatures/PartitionPairs> rdf:type owl:Class ;
+                                                               rdfs:subClassOf bmo:NeuriteFeature ;
+                                                               rdfs:label "Partition Pairs"@en ;
+                                                               <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "partition_pairs"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/RemoteBifurcationAngles
+<https://bbp.epfl.ch/ontologies/core/mfeatures/RemoteBifurcationAngles> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                        rdfs:label "Remote Bifurcation Angles"@en ;
+                                                                        <http://www.w3.org/2004/02/skos/core#definition> "Remote bifurcation angles"^^xsd:string ;
+                                                                        <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "remote_bifurcation_angles"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/Section
+<https://bbp.epfl.ch/ontologies/core/mfeatures/Section> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyUnit> ;
+                                                        rdfs:label "Section"@en ;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "A section is a series of one or more segments. A section can represent a part of axon, soma or dendrite. The first and the last point of section must be of the following combinations: starting point and forking point, forking point and end point, forking point and forking point or starting point and end point."^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionAreas
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionAreas> rdf:type owl:Class ;
+                                                             rdfs:subClassOf bmo:NeuriteFeature ;
+                                                             rdfs:label "Section Areas"@en ;
+                                                             <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_areas"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBifBranchOrders
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBifBranchOrders> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                       rdfs:label "Section Bif Branch Orders"@en ;
+                                                                       <http://www.w3.org/2004/02/skos/core#definition> "Bifurcation section branch orders."^^xsd:string ;
+                                                                       <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_bif_branch_orders"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBifRadialDistances
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBifRadialDistances> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                          rdfs:label "Section Bif Radial Distances"@en ;
+                                                                          <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_bif_radial_distances"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBifurcationLengths
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBifurcationLengths> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                          rdfs:label "Section Bifurcation Lengths"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "Bifurcation section lengths."^^xsd:string ;
+                                                                          <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_bif_lengths"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBranchOrders
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionBranchOrders> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                    rdfs:label "Section Branch Orders"@en ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_branch_orders"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionEndDistances
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionEndDistances> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                    rdfs:label "Section End Distances"@en ;
+                                                                    <http://www.w3.org/2004/02/skos/core#definition> "Section end to end distances."^^xsd:string ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_end_distances"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionLengths
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionLengths> rdf:type owl:Class ;
+                                                               rdfs:subClassOf bmo:NeuriteFeature ;
+                                                               rdfs:label "Section Lengths"@en ;
+                                                               <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_lengths"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionPathDistances
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionPathDistances> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                     rdfs:label "Section Path Distances"@en ;
+                                                                     <http://www.w3.org/2004/02/skos/core#definition> "Path lengths."^^xsd:string ;
+                                                                     <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_path_distances"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionRadialDistances
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionRadialDistances> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                       rdfs:label "Section Radial Distances"@en ;
+                                                                       <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_radial_distances"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionStrahlerOrders
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionStrahlerOrders> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                      rdfs:label "Section Strahler Orders"@en ;
+                                                                      <http://www.w3.org/2004/02/skos/core#definition> "Inter-segment opening angles in a section."^^xsd:string ;
+                                                                      <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_strahler_orders"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTaperRates
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTaperRates> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                  rdfs:label "Section Taper Rates"@en ;
+                                                                  <http://www.w3.org/2004/02/skos/core#definition> "Diameter taper rates of the sections from root to tip. Taper rate is defined here as the linear fit along a section. It is expected to be negative for morphologies."^^xsd:string ;
+                                                                  <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_taper_rates"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTermBranchOrders
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTermBranchOrders> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                        rdfs:label "Section Term Branch Orders"@en ;
+                                                                        <http://www.w3.org/2004/02/skos/core#definition> "Termination section branch orders"^^xsd:string ;
+                                                                        <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_term_branch_orders"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTermRadialDistances
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTermRadialDistances> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                           rdfs:label "Section Term Radial Distances"@en ;
+                                                                           <http://www.w3.org/2004/02/skos/core#definition> "Radial distances of the termination sections."^^xsd:string ;
+                                                                           <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_term_radial_distances"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTerminationLengths
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTerminationLengths> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                          rdfs:label "Section Termination Lengths"@en ;
+                                                                          <http://www.w3.org/2004/02/skos/core#definition> "Termination section lengths."^^xsd:string ;
+                                                                          <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_term_lengths"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTortuosity
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionTortuosity> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                  rdfs:label "Section Tortuosity"@en ;
+                                                                  <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_tortuosity"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SectionVolumes
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SectionVolumes> rdf:type owl:Class ;
+                                                               rdfs:subClassOf bmo:NeuriteFeature ;
+                                                               rdfs:label "Section Volumes"@en ;
+                                                               <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "section_volumes"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/Segment
+<https://bbp.epfl.ch/ontologies/core/mfeatures/Segment> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyUnit> ;
+                                                        rdfs:label "Segment"@en ;
+                                                        <http://www.w3.org/2004/02/skos/core#definition> "A segment consists of two consecutive points belonging to the same section"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentLengths
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentLengths> rdf:type owl:Class ;
+                                                               rdfs:subClassOf bmo:NeuriteFeature ;
+                                                               rdfs:label "Segment Lengths"@en ;
+                                                               <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "segment_lengths"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentMidpoints
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentMidpoints> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                 rdfs:label "Segment Midpoints"@en ;
+                                                                 <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "segment_midpoints"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentRadialDistances
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SegmentRadialDistances> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                       rdfs:label "Segment Radial Distances"@en ;
+                                                                       <http://www.w3.org/2004/02/skos/core#definition> "Distances between all segment mid points and origin."^^xsd:string ;
+                                                                       <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "segment_radial_distances"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SiblingRatios
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SiblingRatios> rdf:type owl:Class ;
+                                                              rdfs:subClassOf bmo:NeuriteFeature ;
+                                                              rdfs:label "Sibling Ratios"@en ;
+                                                              <http://www.w3.org/2004/02/skos/core#definition> "Sibling ratios at bf points. The sibling ratio is the ratio between the diameters of the smallest and the largest child. It is a real number between 0 and 1. Method argument allows one to consider mean diameters along the child section instead of diameter of the first point."^^xsd:string ;
+                                                              <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "sibling_ratios"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SomaFeature
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SomaFeature> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyFeature> ,
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty <https://bbp.epfl.ch/ontologies/core/mfeatures/isFeatureOf> ;
+                                                                              owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Soma>
+                                                                            ] ;
+                                                            rdfs:label "Soma Feature"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SomaNumberOfPoints
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SomaNumberOfPoints> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/SomaFeature> ;
+                                                                   rdfs:label "Soma Number Of Points"@en ;
+                                                                   <http://www.w3.org/2004/02/skos/core#definition> "Number of points (as 3D coordinates) that compose the soma in the morphology file"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SomaRadius
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SomaRadius> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/SomaFeature> ,
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <https://bbp.epfl.ch/ontologies/core/mfeatures/isFeatureOf> ;
+                                                                             owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Soma>
+                                                                           ] ;
+                                                           rdfs:label "Soma Radius"@en ;
+                                                           <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "soma_radius"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/SomaSurfaceArea
+<https://bbp.epfl.ch/ontologies/core/mfeatures/SomaSurfaceArea> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/SomaFeature> ,
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <https://bbp.epfl.ch/ontologies/core/mfeatures/isFeatureOf> ;
+                                                                                  owl:someValuesFrom <https://bbp.epfl.ch/ontologies/core/bmo/Soma>
+                                                                                ] ;
+                                                                rdfs:label "Soma Surface Area"@en ;
+                                                                <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "soma_surface_area"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/TerminalPathLengths
+<https://bbp.epfl.ch/ontologies/core/mfeatures/TerminalPathLengths> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf bmo:NeuriteFeature ;
+                                                                    rdfs:label "Terminal Path Lengths"@en ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "terminal_path_lengths"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/TotalAreaPerNeurite
+<https://bbp.epfl.ch/ontologies/core/mfeatures/TotalAreaPerNeurite> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyFeature> ;
+                                                                    rdfs:label "Total Area Per Neurite"@en ;
+                                                                    <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "total_area_per_neurite"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/TotalLengthPerNeurite
+<https://bbp.epfl.ch/ontologies/core/mfeatures/TotalLengthPerNeurite> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyFeature> ;
+                                                                      rdfs:label "Total Length Per Neurite"@en ;
+                                                                      <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "total_length_per_neurite"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/mfeatures/TotalVolumePerNeurite
+<https://bbp.epfl.ch/ontologies/core/mfeatures/TotalVolumePerNeurite> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/MorphologyFeature> ;
+                                                                      rdfs:label "Total Volume Per Neurite"@en ;
+                                                                      <https://bbp.epfl.ch/ontologies/core/mfeatures/neurom_id> "total_volume_per_neurite"^^xsd:string .
+
+
+###  https://neuroshapes.org/ApicalDendrite
+<https://neuroshapes.org/ApicalDendrite> rdf:type owl:Class ;
+                                         rdfs:subClassOf <https://neuroshapes.org/Dendrite> ;
+                                         rdfs:isDefinedBy "https://bbp.epfl.ch/nexus/webprotege/#projects/f361a26d-3ee9-4f71-86c8-ff710e089efd/edit/Classes" .
+
+
+###  https://neuroshapes.org/Axon
+<https://neuroshapes.org/Axon> rdf:type owl:Class ;
+                               rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/Neurite> ;
+                               rdfs:isDefinedBy "https://bbp.epfl.ch/nexus/webprotege/#projects/f361a26d-3ee9-4f71-86c8-ff710e089efd/edit/Classes" ;
+                               rdfs:label "Axon" .
+
+
+###  https://neuroshapes.org/BasalDendrite
+<https://neuroshapes.org/BasalDendrite> rdf:type owl:Class ;
+                                        rdfs:subClassOf <https://neuroshapes.org/Dendrite> ;
+                                        rdfs:isDefinedBy "https://bbp.epfl.ch/nexus/webprotege/#projects/f361a26d-3ee9-4f71-86c8-ff710e089efd/edit/Classes" ;
+                                        rdfs:label "Basal Dendrite" .
+
+
+###  https://neuroshapes.org/Dendrite
+<https://neuroshapes.org/Dendrite> rdf:type owl:Class ;
+                                   rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/mfeatures/Neurite> ;
+                                   rdfs:isDefinedBy "https://bbp.epfl.ch/nexus/webprotege/#projects/f361a26d-3ee9-4f71-86c8-ff710e089efd/edit/Classes" ;
+                                   rdfs:label "Dendrite" .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

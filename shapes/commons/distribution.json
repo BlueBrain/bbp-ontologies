@@ -1,0 +1,99 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/distribution/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/distribution",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/quantitativevalue"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/distribution/shapes/DistributionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "or": [
+            {
+              "property": [
+                {
+                  "description": "When followed this link leads to the actual data.",
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "nodeKind": "sh:IRI",
+                  "path": "schema:contentUrl"
+                }
+              ]
+            },
+            {
+              "property": [
+                {
+                  "description": "When followed this link leads to a resource providing further description on how to download the attached data.",
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "nodeKind": "sh:IRI",
+                  "path": "schema:url"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "property": [
+            {
+              "maxCount": 1,
+              "node": "nsg:commons/quantitativevalue/shapes/PositiveQuantitativeValueShape",
+              "path": "schema:contentSize"
+            },
+            {
+              "node": "this:DigestShape",
+              "path": "nsg:digest"
+            },
+            {
+              "description": "A Link towards the distribution license.",
+              "path": "schema:license"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "The distribution name.",
+              "path": "schema:name"
+            },
+            {
+              "comment": "The pattern used here is temporary and not complete. The media type values need to be taken from a controlled vocabulary: to be handled in a next iteration.",
+              "datatype": "xsd:string",
+              "description": "The media value should start with one of the following application|audio|font|image|message|model|multipart|text|video followed by / and then any Alphanumeric characters.",
+              "maxCount": 1,
+              "path": "schema:encodingFormat",
+              "pattern": "^(application|audio|font|image|message|model|multipart|text|video)/[A-Za-z0-9]+"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/distribution/shapes/DigestShape",
+      "@type": "NodeShape",
+      "property": [
+        {
+          "datatype": "xsd:string",
+          "description": "The digest value.",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Digest",
+          "path": "schema:value"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "The digest algorithm.",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Algorithm",
+          "path": "schema:algorithm"
+        }
+      ]
+    }
+  ]
+}

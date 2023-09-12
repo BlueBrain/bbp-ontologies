@@ -1,0 +1,76 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/electrophysiologyfeatureextractiontrace/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/electrophysiologyfeatureextractiontrace",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/subject",
+    "nsg:commons/entity",
+    "nsg:commons/labeledontologyentity",
+    "nsg:commons/quantitativevalue"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/electrophysiologyfeatureextractiontrace/shapes/ElectrophysiologyFeatureExtractionTraceShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:Subject",
+              "description": "The subject information (e.g. species).",
+              "name": "Subject",
+              "path": "nsg:subject"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "The e-model",
+              "name": "E-model",
+              "path": "nsg:eModel"
+            },
+            {
+              "description": "The shape of the stimulus",
+              "name": "Stimulus",
+              "node": "this:StimulusShape",
+              "path": "nsg:stimulus"
+            },
+            {
+              "class": "nsg:Trace",
+              "description": "Trace",
+              "name": "Trace",
+              "path": "nsg:trace"
+            },
+            {
+              "class": "nsg:Cell",
+              "description": "Cell",
+              "name": "Cell",
+              "path": "nsg:cell"
+            }
+          ]
+        },
+        {
+          "@id": "https://neuroshapes.org/dash/electrophysiologyfeatureextractiontrace/shapes/StimulusShape",
+          "@type": "NodeShape",
+          "label": "Stimulus shape definition",
+          "property": [
+            {
+              "maxCount": 1,
+              "name": "Stimulus type",
+              "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
+              "path": "nsg:stimulusType"
+            }
+          ]
+        }
+      ],
+      "nodeKind": "sh:IRI",
+      "targetClass": "nsg:ElectrophysiologyFeatureExtractionTrace"
+    }
+  ]
+}

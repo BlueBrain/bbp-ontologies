@@ -1,0 +1,46 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://bbp.epfl.ch/shapes/commons/workflow/shapes/"
+    }
+  ],
+  "@id": "https://bbp.epfl.ch/shapes/commons/workflow",
+  "@type": "nxv:Schema",
+  "imports": [
+    "nsg:commons/entity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/commons/workflow/shapes/WorkflowShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "class": "prov:Entity",
+              "description": "What the workflow is about",
+              "name": "About",
+              "path": "schema:about"
+            },
+            {
+              "class": "prov:Entity",
+              "description": "What the workflow will uses",
+              "name": "Generates",
+              "path": "bmo:uses"
+            },
+            {
+              "class": "prov:Entity",
+              "description": "What the workflow will generate",
+              "name": "Generates",
+              "path": "bmo:generates"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

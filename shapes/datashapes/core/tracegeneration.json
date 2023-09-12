@@ -1,0 +1,166 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/tracegeneration/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/tracegeneration",
+  "@type": "Schema",
+  "imports": [
+    "https://provshapes.org/commons/generation",
+    "nsg:commons/quantitativevalue",
+    "nsg:commons/typedlabeledontologyterm"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/electrophysiology/src/main/resources/schemas/neurosciencegraph/electrophysiology/tracegeneration/v1.0.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/tracegeneration/shapes/TraceGenerationShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "https://provshapes.org/commons/generation/shapes/GenerationShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:StimulusExperiment",
+              "description": "Points at stimulus experiment activity that generated trace.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Activity",
+              "path": "prov:activity"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Laboratory identifier of the experiment.",
+              "maxCount": 1,
+              "name": "Provider experiment ID",
+              "path": "nsg:providerExperimentId"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Laboratory name of the experiment.",
+              "maxCount": 1,
+              "name": "Provider experiment name",
+              "path": "nsg:providerExperimentName"
+            },
+            {
+              "datatype": "xsd:integer",
+              "description": "Sweep number of the trace.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Sweep",
+              "path": "nsg:sweep"
+            },
+            {
+              "datatype": "xsd:integer",
+              "description": "Repetition.",
+              "maxCount": 1,
+              "name": "Repetition",
+              "path": "nsg:repetition"
+            },
+            {
+              "description": "Target holding potential of patched cell.",
+              "maxCount": 1,
+              "name": "Target holding potential",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:targetHoldingPotential"
+            },
+            {
+              "description": "Measured holding potential of patched cell.",
+              "maxCount": 1,
+              "name": "Measured holding potential",
+              "node": "nsg:commons/quantitativevalue/shapes/RepeatedQuantitativeValueShape",
+              "path": "nsg:measuredHoldingPotential"
+            },
+            {
+              "description": "Input resistance of patched cell.",
+              "maxCount": 1,
+              "name": "Input resistance",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:inputResistance"
+            },
+            {
+              "description": "Series resistance compensation while patching cell.",
+              "maxCount": 1,
+              "name": "Series resistance",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:seriesResistance"
+            },
+            {
+              "description": "Compensation current for series resistance.",
+              "maxCount": 1,
+              "name": "Compensation current",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:compensationCurrent"
+            },
+            {
+              "description": "Settings of analog-to-digital converter",
+              "maxCount": 1,
+              "name": "Analog-to-digital converter settings",
+              "node": "this:ConverterShape",
+              "path": "nsg:analogToDigitalConverter"
+            },
+            {
+              "description": "Settings of digital-to-analog converter",
+              "maxCount": 1,
+              "name": "Digital-to-analog converter settings",
+              "node": "this:DigitalToAnalogConverterShape",
+              "path": "nsg:digitalToAnalogConverter"
+            }
+          ]
+        }
+      ],
+      "label": "Trace generation shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:TraceGeneration"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/tracegeneration/shapes/DigitalToAnalogConverterShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:ConverterShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:float",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Scale",
+              "path": "nsg:scale"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/tracegeneration/shapes/ConverterShape",
+      "@type": "NodeShape",
+      "property": [
+        {
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Unit",
+          "node": "nsg:commons/typedlabeledontologyterm/shapes/UnitOntologyTermShape",
+          "path": "schema:unitCode"
+        },
+        {
+          "datatype": "xsd:float",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Gain",
+          "path": "nsg:gain"
+        },
+        {
+          "description": "Name of the converter",
+          "maxCount": 1,
+          "name": "Name",
+          "path": "schema:name"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+    "@context": [
+      "https://incf.github.io/neuroshapes/contexts/schema.json"
+    ],
+    "@id": "https://neuroshapes.org/dash/modelbuildingconfig",
+    "@type": "Schema",
+    "imports": [
+        "nsg:commons/subject",
+        "nsg:commons/brainlocation",
+        "nsg:commons/entity",
+        "nsg:commons/contribution"
+    ],
+    "shapes": [
+      {
+        "@id": "https://neuroshapes.org/dash/modelbuildingconfig/shapes/ModelBuildingConfigShape",
+        "@type": "NodeShape",
+        "and": [
+          {
+            "node": "nsg:commons/entity/shapes/EntityShape"
+          },
+          {
+            "property": [
+              {
+                "description": "Brain location information of the density (e.g. a specific cortical layer).",
+                "name": "Brain location",
+                "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
+                "path": "nsg:brainLocation"
+              },
+              {
+                "maxCount": 1,
+                "minCount": 1,
+                "nodeKind": "sh:IRI",
+                "path": "nsg:atlasRelease"
+              },
+              {
+                "class": "nsg:Subject",
+                "description": "The subject of the study. This data represent an observation of this subject.",
+                "editorialNote": "Asserted subject entity. It may differ from the subject from the provenance.",
+                "minCount": 1,
+                "name": "Subject",
+                "path": "nsg:subject",
+                "node": "nsg:commons/subject/shapes/SubjectShape"
+              },
+              {
+                "class": "nsg:Contribution",
+                "description": "Information about the contribution of an agent during the generation of this dataset.",
+                "minCount": 1,
+                "name": "Qualified Contribution",
+                "nodeKind": "sh:BlankNodeOrIRI",
+                "path": "nsg:contribution",
+                "node": "nsg:commons/contribution/shapes/ContributionShape"
+              },
+              {
+                "description": "The composition of cells (neurons and glia) used to generate a circuit.",
+                "minCount": 1,
+                "maxCount": 1,
+                "name": "Cell composition",
+                "seeAlso": "https://neuroshapes.org/dash/cellcomposition/shapes/CellCompositionShape",
+                "class":"bmo:CellComposition",
+                "path": "bmo:cellComposition"
+              },
+              {
+                "description": "A circuit build from the configuration defined in the model configuration.",
+                "minCount": 1,
+                "maxCount": 1,
+                "name": "Detailed circuit",
+                "seeAlso": "https://neuroshapes.org/dash/detailedcircuit/shapes/DetailedCircuitShape",
+                "class":"nsg:DetailedCircuit",
+                "path": "nsg:detailedCircuit"
+              }
+            ]
+          }
+        ],
+        "label": "ModelBuildingConfig shape definition",
+        "nodeKind": "sh:BlankNodeOrIRI",
+        "targetClass": "bmo:ModelBuildingConfig"
+      }
+    ]
+  }

@@ -1,0 +1,55 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/acquisitionannotation/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/acquisitionannotation",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/activity"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/morphology/src/main/resources/schemas/neurosciencegraph/morphology/acquisitionannotation/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/acquisitionannotation/shapes/AcquisitionAnnotationShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/activity/shapes/ActivityShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:string",
+              "description": "Objective magnification used to acquire the slice images.",
+              "maxCount": 1,
+              "name": "Objective magnification",
+              "path": "nsg:objectiveMagnification"
+            },
+            {
+              "class": "nsg:FixedStainedSlice",
+              "description": "The fixed and stained slice used",
+              "maxCount": 1,
+              "minCount": 1,
+              "path": "prov:used",
+              "seeAlso": "nsg:dash/fixedstainedslice/shapes/FixedStainedSliceShape"
+            },
+            {
+              "class": "nsg:AnnotatedSlice",
+              "description": "The annotated slice generated.",
+              "maxCount": 1,
+              "minCount": 1,
+              "path": "prov:generated",
+              "seeAlso": "nsg:dash/annotatedslice/shapes/AnnotatedSliceShape"
+            }
+          ]
+        }
+      ],
+      "label": "Acquisition and annotation shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:AcquisitionAnnotation"
+    }
+  ]
+}

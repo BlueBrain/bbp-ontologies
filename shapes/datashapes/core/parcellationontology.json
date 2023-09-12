@@ -1,0 +1,37 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/parcellationontology/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/parcellationontology",
+  "@type": "Schema",
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/parcellationontology/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/parcellationontology/shapes/ParcellationOntologyShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:string",
+              "description": "The version of the atlas that defines this parcellation ontology.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Atlas Version",
+              "path": "nsg:atlasVersion"
+            }
+          ]
+        }
+      ],
+      "label": "Parcellation ontology. TODO: The targeting type definied here needs to correspond to the one of the brain parcellations labels in https://raw.githubusercontent.com/SciCrunch/NIF-Ontology/master/ttl/generated/parcellation.ttl",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:ParcellationOntology"
+    }
+  ]
+}

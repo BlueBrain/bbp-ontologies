@@ -1,0 +1,33 @@
+{
+    "@context": [
+      "https://incf.github.io/neuroshapes/contexts/schema.json"
+    ],
+    "@id": "https://neuroshapes.org/dash/cellcompositionvolume",
+    "@type": "Schema",
+    "imports": [
+      "nsg:commons/minds"
+    ],
+    "shapes": [
+      {
+        "@id": "https://neuroshapes.org/dash/cellcompositionvolume/shapes/CellCompositionVolumeShape",
+        "@type": "NodeShape",
+        "and": [
+          {
+            "node": "https://neuroshapes.org/commons/minds/shapes/MINDSShape"
+          },
+          {
+            "property": [
+              {
+              "minCount": 1,
+              "path": "nsg:atlasRelease"
+            }
+              
+              ]
+          }
+        ],
+        "label": "CellCompositionVolume shape definition",
+        "nodeKind": "sh:BlankNodeOrIRI",
+        "targetClass": "bmo:CellCompositionVolume"
+      }
+    ]
+  }

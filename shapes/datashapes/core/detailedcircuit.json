@@ -1,0 +1,55 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/detailedcircuit/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/detailedcircuit",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/modelinstance"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/detailedcircuit/v0.1.2.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/detailedcircuit/shapes/DetailedCircuitShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/modelinstance/shapes/ModelInstanceShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:NodeCollection",
+              "description": "Node collection entity.",
+              "minCount": 1,
+              "name": "Node collection",
+              "path": "nsg:nodeCollection",
+              "seeAlso": "nsg:dash/nodecollection/shapes/NodeCollectionShape"
+            },
+            {
+              "class": "nsg:EdgeCollection",
+              "description": "Location of nrn synapse file and additional circuit description files: start.ncs and start.target",
+              "name": "nrnPath",
+              "path": "nsg:edgeCollection",
+              "seeAlso": "nsg:dash/edgecollection/shapes/EdgeCollectionShape"
+            },
+            {
+              "class": "nsg:Target",
+              "description": "Optional parameter giving location of predefined targets stored in the named file",
+              "editorialNote": "constrain with application/bbp-target",
+              "maxCount": 1,
+              "name": "TargetFile",
+              "path": "nsg:target",
+              "seeAlso": "nsg:dash/target/shapes/TargetShape"
+            }
+          ]
+        }
+      ],
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:DetailedCircuit"
+    }
+  ]
+}

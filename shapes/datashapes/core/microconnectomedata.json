@@ -1,0 +1,40 @@
+{
+    "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+    "@id": "https://neuroshapes.org/dash/microconnectomedata",
+    "@type": "Schema",
+    "imports": [
+        "nsg:commons/minds"
+      ],
+    "shapes": [
+      {
+        "@id": "https://neuroshapes.org/dash/cellcomposition/shapes/MicroConnectomeDataShape",
+        "@type": "NodeShape",
+          "and": [
+            {
+              "node": "nsg:commons/minds/shapes/MINDSShape"
+            },
+          {
+            "property": [
+              {
+                "description": "The connectome variant name for which parameters are given.",
+                "minCount": 1,
+                "name": "Connectome variant name",
+                "class":"bmo:Variant",
+                "path": "nsg:variant"
+              },
+              {
+                "description": "Name of the generator that is used in the workflow",
+                "minCount": 1,
+                "name": "Generator name",
+                "class":"bmo:EntityGenerator",
+                "path": "nsg:generator"
+              }
+            ]
+          }
+        ],
+        "label": "MicroConnectomeData shape definition",
+        "nodeKind": "sh:BlankNodeOrIRI",
+        "targetClass": "bmo:MicroConnectomeData"
+      }
+    ]
+  }

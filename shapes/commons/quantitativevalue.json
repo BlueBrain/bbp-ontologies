@@ -1,0 +1,151 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/quantitativevalue/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/quantitativevalue",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/labeledontologyentity",
+    "nsg:commons/unit"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/quantitativevalue/v0.1.2.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/quantitativevalue/shapes/QuantitativeValueShape",
+      "@type": "NodeShape",
+      "property": [
+        {
+          "description": "The value of the quantitative value or property value node.",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Value",
+          "or": [
+            {
+              "datatype": "xsd:float"
+            },
+            {
+              "datatype": "xsd:decimal"
+            },
+            {
+              "datatype": "xsd:double"
+            },
+            {
+              "datatype": "xsd:int"
+            },
+            {
+              "datatype": "xsd:long"
+            },
+            {
+              "datatype": "xsd:unsignedInt"
+            },
+            {
+              "datatype": "xsd:unsignedLong"
+            },
+            {
+              "datatype": "xsd:integer"
+            }
+          ],
+          "path": "schema:value"
+        },
+        "nsg:commons/unit/shapes/WithUnitCodeShape"
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/quantitativevalue/shapes/RepeatedQuantitativeValueShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:QuantitativeValueShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Number of repetitions of an activity (a measurement for example).",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Repetitions",
+              "path": "schema:repetitions",
+              "xone": [
+                {
+                  "datatype": "xsd:integer"
+                },
+                {
+                  "node": "this:QuantitativeValueShape"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/quantitativevalue/shapes/PositiveQuantitativeValueShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:QuantitativeValueShape"
+        },
+        {
+          "property": [
+            {
+              "minInclusive": 0,
+              "path": "schema:value"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/quantitativevalue/shapes/NegativeQuantitativeValueShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:QuantitativeValueShape"
+        },
+        {
+          "property": [
+            {
+              "maxExclusive": 0,
+              "path": "schema:value"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/quantitativevalue/shapes/RangeQuantitativeValueShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/unit/shapes/UnitShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The minimum value of the quantitative value.",
+              "lessThan": "schema:maxValue",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Minimum value",
+              "path": "schema:minValue"
+            },
+            {
+              "description": "The maximum value of the quantitative value.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Maximum value",
+              "path": "schema:maxValue"
+            },
+            {
+              "minCount": 0,
+              "path": "schema:value"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

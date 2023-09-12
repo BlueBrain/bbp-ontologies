@@ -1,0 +1,23 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://bbp.epfl.ch/shapes/dash/workflow/shapes/"
+    }
+  ],
+  "@id": "https://bbp.epfl.ch/shapes/dash/workflow",
+  "@type": "nxv:Schema",
+  "imports": [
+    "https://bbp.epfl.ch/shapes/commons/workflow"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/workflow/shapes/WorkflowShape",
+      "@type": "NodeShape",
+      "label": "A workflow represents a set of actions or steps intended by one or more agents to achieve some goals. A workflow is a specification or a plan and is instantiated by activities.",
+      "node": "https://bbp.epfl.ch/shapes/commons/workflow/shapes/WorkflowShape",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "bmo:Workflow"
+    }
+  ]
+}

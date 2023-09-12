@@ -1,0 +1,42 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/emodelfeaturegeneration/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/emodelfeaturegeneration",
+  "@type": "Schema",
+  "imports": [
+    "https://provshapes.org/commons/generation"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/emodelfeaturegeneration/v0.1.1.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/emodelfeaturegeneration/shapes/EmodelFeatureGenerationShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "https://provshapes.org/commons/generation/shapes/GenerationShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:TraceFeatureExtraction",
+              "description": "Points at the feature experiment activity that generated the emodelFeature",
+              "editorialNote": "The sh:node constraint can be added once the validator support node constraint.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Activity",
+              "path": "prov:activity"
+            }
+          ]
+        }
+      ],
+      "editorialNote": "What context information should be added in this generation ?",
+      "label": "Trace generation shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:EmodelFeatureGeneration"
+    }
+  ]
+}

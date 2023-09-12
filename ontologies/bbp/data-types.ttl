@@ -1,0 +1,213 @@
+@prefix : <http://bbp.epfl.ch/neurosciencegraph/ontologies/datatype#> .
+@prefix nsg: <https://neuroshapes.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@base <http://bbp.epfl.ch/neurosciencegraph/ontologies/datatype> .
+
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/datatype> rdf:type owl:Ontology ;
+                                                            owl:versionInfo "R192"^^xsd:string ;
+                                                            rdfs:label "Dataset Type Ontology"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+<http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://neuroshapes.org/defines
+<https://neuroshapes.org/defines> rdf:type owl:AnnotationProperty ;
+                                   rdfs:label "defines"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://schema.org/Dataset
+schema:Dataset rdf:type owl:Class ;
+               rdfs:label "Dataset"@en ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Dataset"@en .
+
+
+###  http://www.w3.org/ns/prov#Entity
+<http://www.w3.org/ns/prov#Entity> rdf:type owl:Class ;
+                                   rdfs:label "Entity"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/CellComposition
+<https://bbp.epfl.ch/ontologies/core/bmo/CellComposition> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                                                          rdfs:label "CellComposition"@en ;
+                                                          <http://www.w3.org/2004/02/skos/core#prefLabel> "CellComposition"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/CellCompositionSummary
+<https://bbp.epfl.ch/ontologies/core/bmo/CellCompositionSummary> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf schema:Dataset ;
+                                                                 rdfs:label "CellCompositionSummary"@en ;
+                                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "CellCompositionSummary"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/CellCompositionVolume
+<https://bbp.epfl.ch/ontologies/core/bmo/CellCompositionVolume> rdf:type owl:Class ;
+                                                                rdfs:subClassOf schema:Dataset ;
+                                                                rdfs:label "CellCompositionVolume"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "CellCompositionVolume"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/METypeDensity
+<https://bbp.epfl.ch/ontologies/core/bmo/METypeDensity> rdf:type owl:Class ;
+                                                        rdfs:subClassOf nsg:CellDensityDataLayer ;
+                                                        rdfs:label "METypeDensity"@en ;
+                                                        <http://www.w3.org/2004/02/skos/core#prefLabel> "ME-type density volume"^^xsd:string .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/METypeRatio
+<https://bbp.epfl.ch/ontologies/core/bmo/METypeRatio> rdf:type owl:Class ;
+                                                      rdfs:label "METypeRatio"@en ;
+                                                      <http://www.w3.org/2004/02/skos/core#prefLabel> "METype ratio"@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/MTypeDensity
+<https://bbp.epfl.ch/ontologies/core/bmo/MTypeDensity> rdf:type owl:Class ;
+                                                       rdfs:subClassOf nsg:CellDensityDataLayer ;
+                                                       rdfs:label "MTypeDensity"@en ;
+                                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "MType Density volume"@en .
+
+
+###  https://neuroshapes.org/BrainParcellationDataLayer
+nsg:BrainParcellationDataLayer rdf:type owl:Class ;
+                               rdfs:subClassOf nsg:VolumetricDataLayer ;
+                               rdfs:label "BrainParcellationDataLayer"@en ;
+                               <http://www.w3.org/2004/02/skos/core#prefLabel> "Brain Parcellation Volume"@en .
+
+
+###  https://neuroshapes.org/BrainRegionMesh
+nsg:BrainRegionMesh rdf:type owl:Class ;
+                    rdfs:subClassOf nsg:Mesh ;
+                    rdfs:label "BrainRegionMesh"@en ;
+                    <http://www.w3.org/2004/02/skos/core#prefLabel> "Brain Region Mesh"@en .
+
+
+###  https://neuroshapes.org/BrainTemplateDataLayer
+nsg:BrainTemplateDataLayer rdf:type owl:Class ;
+                           rdfs:subClassOf nsg:VolumetricDataLayer ;
+                           rdfs:label "BrainTemplateDataLayer"@en ;
+                           <http://www.w3.org/2004/02/skos/core#prefLabel> "Brain Template Volume"@en .
+
+
+###  https://neuroshapes.org/CellDensityDataLayer
+nsg:CellDensityDataLayer rdf:type owl:Class ;
+                         rdfs:subClassOf nsg:VolumetricDataLayer ;
+                         rdfs:label "CellDensityDataLayer"@en ;
+                         <http://www.w3.org/2004/02/skos/core#prefLabel> "Cell Density Volume"@en .
+
+
+###  https://neuroshapes.org/CellPositions
+nsg:CellPositions rdf:type owl:Class ;
+                  rdfs:subClassOf nsg:PointCloud ;
+                  rdfs:label "CellPositions"@en ;
+                  <http://www.w3.org/2004/02/skos/core#altLabel> "Cell Positions"@en ,
+                                                                 "CellPositions"@en ;
+                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Cell Positions"@en .
+
+
+###  https://neuroshapes.org/ElectricalSeries
+nsg:ElectricalSeries rdf:type owl:Class ;
+                     rdfs:subClassOf nsg:TimeSeries ;
+                     rdfs:label "ElectricalSeries"@en ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Electrical Series"@en .
+
+
+###  https://neuroshapes.org/GeneExpressionVolumetricDataLayer
+nsg:GeneExpressionVolumetricDataLayer rdf:type owl:Class ;
+                                      rdfs:subClassOf nsg:VolumetricDataLayer ;
+                                      rdfs:label "GeneExpressionVolumetricDataLayer"@en ;
+                                      <http://www.w3.org/2004/02/skos/core#prefLabel> "Gene Expression Volume"@en .
+
+
+###  https://neuroshapes.org/Literature
+nsg:Literature rdf:type owl:Class ;
+               rdfs:subClassOf schema:Dataset ;
+               rdfs:label "Literature"@en ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Literature"@en .
+
+
+###  https://neuroshapes.org/Mesh
+nsg:Mesh rdf:type owl:Class ;
+         rdfs:subClassOf schema:Dataset ;
+         rdfs:label "Mesh"@en ;
+         <http://www.w3.org/2004/02/skos/core#prefLabel> "Mesh"@en .
+
+
+###  https://neuroshapes.org/NISSLImageDataLayer
+nsg:NISSLImageDataLayer rdf:type owl:Class ;
+                        rdfs:subClassOf nsg:VolumetricDataLayer ;
+                        rdfs:label "NISSLImageDataLayer"@en ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "NISSL Volume"@en .
+
+
+###  https://neuroshapes.org/NeuronMorphology
+nsg:NeuronMorphology rdf:type owl:Class ;
+                     rdfs:subClassOf schema:Dataset ;
+                     rdfs:label "NeuronMorphology"@en ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "Neuron Morphology"@en .
+
+
+###  https://neuroshapes.org/PointCloud
+nsg:PointCloud rdf:type owl:Class ;
+               rdfs:subClassOf schema:Dataset ;
+               rdfs:label "PointCloud"@en ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Point Cloud"@en .
+
+
+###  https://neuroshapes.org/ReconstructedNeuronMorphology
+nsg:ReconstructedNeuronMorphology rdf:type owl:Class ;
+                                  rdfs:subClassOf nsg:NeuronMorphology ;
+                                  rdfs:label "ReconstructedNeuronMorphology"@en ;
+                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Reconstructed Neuron Morphology"@en .
+
+
+###  https://neuroshapes.org/SynthesizedNeuronMorphology
+nsg:SynthesizedNeuronMorphology rdf:type owl:Class ;
+                                rdfs:subClassOf nsg:NeuronMorphology ;
+                                rdfs:label "SynthesizedNeuronMorphology"@en ;
+                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Synthesized Neuron Morphology"@en .
+
+
+###  https://neuroshapes.org/TimeSeries
+nsg:TimeSeries rdf:type owl:Class ;
+               rdfs:subClassOf schema:Dataset ;
+               rdfs:label "TimeSeries"@en ;
+               <http://www.w3.org/2004/02/skos/core#prefLabel> "Time Series"@en .
+
+
+###  https://neuroshapes.org/Trace
+nsg:Trace rdf:type owl:Class ;
+          rdfs:subClassOf nsg:ElectricalSeries ;
+          rdfs:label "Trace"@en ;
+          <http://www.w3.org/2004/02/skos/core#prefLabel> "Trace"@en .
+
+
+###  https://neuroshapes.org/VolumetricDataLayer
+nsg:VolumetricDataLayer rdf:type owl:Class ;
+                        rdfs:subClassOf schema:Dataset ;
+                        rdfs:label "VolumetricDataLayer"@en ;
+                        <http://www.w3.org/2004/02/skos/core#prefLabel> "Volume"@en .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

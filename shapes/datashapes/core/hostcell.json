@@ -1,0 +1,40 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/hostcell/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/hostcell",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/typedlabeledontologyterm"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/hostcell/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/hostcell/shapes/HostCellShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The cell line to which the host cell belongs. Cell lines may come fom the cell line ontology: http://www.clo-ontology.org/",
+              "maxCount": 1,
+              "name": "Cell line",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/CellLineOntologyTermShape",
+              "path": "nsg:cellLine"
+            }
+          ]
+        }
+      ],
+      "label": "Host cell shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:HostCell"
+    }
+  ]
+}

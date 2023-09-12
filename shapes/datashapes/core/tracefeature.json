@@ -1,0 +1,47 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/tracefeature/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/tracefeature",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/tracefeature/v0.1.1.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/tracefeature/shapes/TraceFeatureShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:EmodelFeatureGeneration",
+              "description": "Generation context.",
+              "maxCount": 1,
+              "name": "Generation",
+              "path": "prov:qualifiedGeneration"
+            },
+            {
+              "class": "prov:Collection",
+              "description": "The entities from which this entity was derived from.",
+              "editorialNote": "The node constraint should be added.",
+              "maxCount": 1,
+              "name": "Was derived from",
+              "path": "prov:wasDerivedFrom"
+            }
+          ]
+        }
+      ],
+      "comment": "Trace feature extracted from a trace feature extraction activity.",
+      "label": "Trace feature shape",
+      "targetClass": "nsg:TraceFeature"
+    }
+  ]
+}

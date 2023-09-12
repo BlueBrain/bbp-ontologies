@@ -1,0 +1,101 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/scholarlyarticle/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/scholarlyarticle",
+  "@type": "nxv:Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/organization",
+    "https://neuroshapes.org/commons/person",
+    "https://neuroshapes.org/commons/entity"
+  ],
+  "shapes": [
+    {
+      "@id": "this:ScholarlyArticleShape",
+      "@type": "sh:NodeShape",
+      "label": "Scholarly article",
+      "targetClass": "schema:ScholarlyArticle",
+      "and": [
+        {
+          "node": "https://neuroshapes.org/commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:string",
+              "description": "The article title.",
+              "maxCount": 1,
+              "name": "Title",
+              "path": "schema:title"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Article abstract.",
+              "maxCount": 1,
+              "name": "Abstract",
+              "path": "schema:abstract"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Article Body.",
+              "maxCount": 1,
+              "name": "Article Body",
+              "path": "schema:articleBody"
+            },
+            {
+              "description": "The Creative Work publisher.",
+              "maxCount": 1,
+              "name": "Publisher",
+              "or": [
+                {
+                  "class": "schema:Person",
+                  "node": "https://neuroshapes.org/commons/person/shapes/PersonShape"
+                },
+                {
+                  "class": "schema:Organization",
+                  "node": "https://neuroshapes.org/commons/organization/shapes/OrganizationShape"
+                }
+              ],
+              "path": "schema:publisher"
+            },
+            {
+              "description": "The Creative Work author.",
+              "name": "Author",
+              "or": [
+                {
+                  "class": "schema:Person",
+                  "node": "https://neuroshapes.org/commons/person/shapes/PersonShape"
+                },
+                {
+                  "class": "schema:Organization",
+                  "node": "https://neuroshapes.org/commons/organization/shapes/OrganizationShape"
+                }
+              ],
+              "path": "schema:author"
+            },
+            {
+              "datetype": "xsd:dateTime",
+              "description": "The date of publishing.",
+              "maxCount": 1,
+              "name": "Published date",
+              "path": "schema:datePublished"
+            },
+            {
+              "description": "Is Part Of",
+              "name": "Is Part Of",
+              "path": "schema:isPartOf"
+            },
+            {
+              "description": "Has Part.",
+              "name": "Has Part",
+              "path": "schema:hasPart"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

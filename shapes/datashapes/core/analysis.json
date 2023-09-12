@@ -1,0 +1,68 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/analysis/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/analysis",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/activity"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/analysis/v0.1.2.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/analysis/shapes/AnalysisShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/activity/shapes/ActivityShape"
+        },
+        {
+          "property": [
+            {
+              "minCount": 2,
+              "path": "prov:used"
+            },
+            {
+              "description": "Used model.",
+              "name": "Model",
+              "path": "prov:used",
+              "qualifiedMaxCount": 1,
+              "qualifiedMinCount": 1,
+              "qualifiedValueShape": {
+                "class": "nsg:ModelInstance"
+              },
+              "qualifiedValueShapesDisjoint": true,
+              "seeAlso": "nsg:dash/modelinstance/shapes/ModelInstanceShape"
+            },
+            {
+              "description": "Used variable report.",
+              "name": "Variable report",
+              "path": "prov:used",
+              "qualifiedMaxCount": 1,
+              "qualifiedMinCount": 1,
+              "qualifiedValueShape": {
+                "class": "nsg:VariableReport"
+              },
+              "qualifiedValueShapesDisjoint": true,
+              "seeAlso": "nsg:dash/variablereport/shapes/VariableReportShape"
+            },
+            {
+              "class": "nsg:AnalysisResult",
+              "description": "Generated analysis result.",
+              "minCount": 1,
+              "name": "Analysis Result",
+              "path": "prov:generated",
+              "seeAlso": "nsg:dash/analysisresult/shapes/AnalysisResultShape"
+            }
+          ]
+        }
+      ],
+      "comment": "The analysis strategy/protocol is defined in a protocol.",
+      "label": "Model or simulation report analysis shape",
+      "targetClass": "nsg:Analysis"
+    }
+  ]
+}

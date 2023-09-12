@@ -1,0 +1,51 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/in_vitro_slice_wholecellpatchclamp_electrophysiology_trace/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/in_vitro_slice_wholecellpatchclamp_electrophysiology_trace",
+  "@type": "Schema",
+  "imports": [
+    "nsg:dash/trace"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/electrophysiology/src/main/resources/schemas/neurosciencegraph/electrophysiology/trace/v1.0.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/in_vitro_slice_wholecellpatchclamp_electrophysiology_trace/shapes/TraceShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:dash/trace/shapes/TraceShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:integer",
+              "description": "Channel number of trace",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Channel",
+              "path": "nsg:channel"
+            },
+            {
+              "class": "nsg:TraceGeneration",
+              "description": "Qualified trace generation",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Qualified generation",
+              "path": "prov:qualifiedGeneration"
+            }
+          ]
+        }
+      ],
+      "label": "Electrophysiology trace shape definition. A trace should have an IRI as identifier",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": [
+        "nsg:Trace",
+        "nsg:InVitroSliceWholeCellPatchClampElectrophysiologyTrace"
+      ]
+    }
+  ]
+}

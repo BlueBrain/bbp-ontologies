@@ -1,0 +1,70 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/patchedslice/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/patchedslice",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/brainlocation",
+    "nsg:commons/quantitativevalue"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/patchedslice/v0.1.1.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/patchedslice/shapes/PatchedSliceShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Brain location information of the patchedcell",
+              "name": "Brain location",
+              "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
+              "path": "nsg:brainLocation"
+            },
+            {
+              "class": "prov:Collection",
+              "description": "The collection of patched cells.",
+              "name": "Patched cells collection",
+              "path": "schema:hasPart",
+              "seeAlso": "nsg:dash/patchedcellcollection/shapes/PatchedCellCollectionShape"
+            },
+            {
+              "class": "nsg:Slice",
+              "description": "The slice this patchedSlice is a revision of.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Slice",
+              "path": "prov:wasRevisionOf",
+              "seeAlso": "nsg:dash/slice/shapes/SliceShape"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Solution used in the bath while recording",
+              "maxCount": 1,
+              "name": "Bath solution",
+              "path": "nsg:bathSolution"
+            },
+            {
+              "description": "Recording temperature",
+              "maxCount": 1,
+              "name": "Temperature",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:temperature"
+            }
+          ]
+        }
+      ],
+      "label": "Patched slice shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:PatchedSlice"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/datacatalog",
+  "@type": "Schema",
+  "imports": [
+    "https://bbp.epfl.ch/shapes/commons/datacatalog"
+  ],
+  "shapes": [
+    {
+        "@id": "https://bbp.epfl.ch/shapes/dash/datacatalog/shapes/DataCatalogShape",
+        "node": "https://bbp.epfl.ch/shapes/commons/datacatalog/shapes/DataCatalogShape",
+        "@type": "NodeShape",
+        "targetClass": "schema:DataCatalog"
+    }
+  ]
+}

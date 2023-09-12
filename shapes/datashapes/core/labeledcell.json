@@ -1,0 +1,90 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/labeledcell/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/labeledcell",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/typedlabeledontologyterm",
+    "nsg:commons/brainlocation"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/morphology/src/main/resources/schemas/neurosciencegraph/morphology/labeledcell/v0.2.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/labeledcell/shapes/LabeledCellShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:string",
+              "description": "Project name",
+              "maxCount": 1,
+              "name": "Project name for data produced within the context of a project",
+              "path": "nsg:projectName"
+            },
+            {
+              "description": "Brain location",
+              "maxCount": 1,
+              "name": "Brain location of the labeled cell.",
+              "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
+              "path": "nsg:brainLocation"
+            },
+            {
+              "description": "Indicates the putative morphology type of the labeled cell.",
+              "maxCount": 1,
+              "name": "Putative morphology type",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape",
+              "path": "nsg:putativeMType"
+            },
+            {
+              "description": "Specifies the coordinates of the location of the cell in the slice",
+              "maxCount": 1,
+              "name": "Coordinates of location in slice",
+              "node": "nsg:commons/vector3d/shapes/Vector3DShape",
+              "path": "nsg:locationInSlice"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Spatial cell name given during the annotation process.",
+              "maxCount": 1,
+              "name": "Spatial cell name",
+              "path": "nsg:spatialCellName"
+            },
+            {
+              "datatype": "xsd:boolean",
+              "description": "Indicates if reconstruction the cell has been requested or not",
+              "maxCount": 1,
+              "name": "Reconstruction requested",
+              "path": "nsg:reconstructionRequested"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Indicates if the cell can be reconstructed or not",
+              "maxCount": 1,
+              "name": "Reconstructable",
+              "path": "nsg:reconstructable"
+            },
+            {
+              "class": "nsg:PatchedCell",
+              "description": "The patched cell this labeled cell is a revision of",
+              "maxCount": 1,
+              "name": "Patched cell",
+              "path": "prov:wasRevisionOf"
+            }
+          ]
+        }
+      ],
+      "comment": "Labeled cell shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:LabeledCell"
+    }
+  ]
+}

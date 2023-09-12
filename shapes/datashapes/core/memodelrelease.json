@@ -1,0 +1,52 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/memodelrelease/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/memodelrelease",
+  "@type": "Schema",
+  "imports": [
+    "nsg:dash/modelrelease"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/memodelrelease/v0.1.3.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/memodelrelease/shapes/MEModelReleaseShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:dash/modelrelease/shapes/ModelReleaseShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:EModelRelease",
+              "description": "EModel release shape.",
+              "name": "EModel release",
+              "path": "nsg:emodelRelease",
+              "seeAlso": "nsg:dash/emodelrelease/shapes/EModelReleaseShape"
+            },
+            {
+              "class": "nsg:MorphologyRelease",
+              "description": "Morphology release shape.",
+              "name": "Morphology release",
+              "path": "nsg:morphologyRelease",
+              "seeAlso": "nsg:dash/morphologyrelease/shapes/MorphologyReleaseShape"
+            },
+            {
+              "class": "nsg:ModelReleaseIndex",
+              "description": "Memodel release index file.",
+              "name": "Memodel index",
+              "path": "nsg:memodelIndex",
+              "seeAlso": "nsg:dash/modelreleaseindex/shapes/ModelReleaseIndexShape"
+            }
+          ]
+        }
+      ],
+      "label": "This shape is for...",
+      "targetClass": "nsg:MEModelRelease"
+    }
+  ]
+}

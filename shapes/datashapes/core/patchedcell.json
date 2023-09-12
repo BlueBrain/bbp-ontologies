@@ -1,0 +1,125 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/patchedcell/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/patchedcell",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/quantitativevalue",
+    "nsg:commons/typedlabeledontologyterm",
+    "nsg:commons/brainlocation"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/patchedcell/v0.2.1.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/patchedcell/shapes/PatchedCellShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Brain location information of the patchedcell",
+              "name": "Brain location",
+              "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
+              "path": "nsg:brainLocation"
+            },
+            {
+              "description": "The putative e-type of the patched cell",
+              "maxCount": 1,
+              "name": "Putative e-type",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape",
+              "path": "nsg:putativeEtype"
+            },
+            {
+              "description": "The e-type of the patched cell",
+              "maxCount": 1,
+              "name": "E-type",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape",
+              "path": "nsg:eType"
+            },
+            {
+              "description": "The morphology type of the patched cell",
+              "maxCount": 1,
+              "name": "Morphology type",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape",
+              "path": "nsg:mType"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Number of pipettes used",
+              "maxCount": 1,
+              "name": "Pipette number",
+              "path": "nsg:pipetteNumber"
+            },
+            {
+              "description": "Membrane potential of patched cell at beginning",
+              "maxCount": 1,
+              "name": "Start membrane potential",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:startMembranePotential"
+            },
+            {
+              "description": "Membrane potential of patched cell at the end",
+              "maxCount": 1,
+              "name": "End membrane potential",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:endMembranePotential"
+            },
+            {
+              "description": "Seal resistance of patch",
+              "maxCount": 1,
+              "name": "Seal resistance",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:sealResistance"
+            },
+            {
+              "description": "Resistance of pipette used",
+              "maxCount": 1,
+              "name": "Pipette resistance",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:pipetteResistance"
+            },
+            {
+              "description": "Liquid junction potential of patch",
+              "maxCount": 1,
+              "name": "Liquid junction potential",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:liquidJunctionPotential"
+            },
+            {
+              "description": "The compound used in the pipette to label the cell",
+              "maxCount": 1,
+              "name": "Labeling compound",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/LabelingCompoundOntologyTermShape",
+              "path": "nsg:labelingCompound"
+            },
+            {
+              "description": "The chloride reversal potential calculated from the intracellular solution of the pipette",
+              "maxCount": 1,
+              "name": "Chloride reversal potential",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:chlorideReversalPotential"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Solution used to fill the pipette",
+              "maxCount": 1,
+              "name": "Pipette solution",
+              "path": "nsg:solution"
+            }
+          ]
+        }
+      ],
+      "label": "Patched cell shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:PatchedCell"
+    }
+  ]
+}

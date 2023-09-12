@@ -1,0 +1,40 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/transform/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/transform",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/distribution"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/transform/v0.2.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/transform/shapes/TransformShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Where the data attached to the entity is published.",
+              "minCount": 1,
+              "name": "Distribution",
+              "node": "nsg:commons/distribution/shapes/DistributionShape",
+              "path": "schema:distribution"
+            }
+          ]
+        }
+      ],
+      "description": "Transform can be either linear or non-linear(deformable).",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:Transform"
+    }
+  ]
+}

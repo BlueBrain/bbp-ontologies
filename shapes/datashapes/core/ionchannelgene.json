@@ -1,0 +1,40 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/ionchannelgene/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/ionchannelgene",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/typedlabeledontologyterm"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/experiment/src/main/resources/schemas/neurosciencegraph/experiment/ionchannelgene/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/ionchannelgene/shapes/IonChannelGeneShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The ion channel gene. Ion channel genes should come fom the gene ontology: http://www.geneontology.org/",
+              "maxCount": 1,
+              "name": "Ion channel gene",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/GeneOntologyTermShape",
+              "path": "nsg:ionChannelGene"
+            }
+          ]
+        }
+      ],
+      "label": "Ion channel gene shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:IonChannelGene"
+    }
+  ]
+}

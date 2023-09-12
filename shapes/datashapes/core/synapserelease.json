@@ -1,0 +1,60 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/synapserelease/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/synapserelease",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/distribution",
+    "nsg:dash/modelrelease"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/synapserelease/v0.1.2.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/synapserelease/shapes/SynapseReleaseShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:dash/modelrelease/shapes/ModelReleaseShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Synapse release data location.",
+              "name": "Synapse release data location",
+              "node": "this:SynapseReleaseDistributionShape",
+              "path": "schema:distribution"
+            }
+          ]
+        }
+      ],
+      "label": "This shape is for...",
+      "targetClass": "nsg:SynapseRelease"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/synapserelease/shapes/SynapseReleaseDistributionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/distribution/shapes/DistributionShape"
+        },
+        {
+          "property": [
+            {
+              "description": "",
+              "in": [
+                "application/mod"
+              ],
+              "name": "Media type",
+              "path": "schema:encodingFormat"
+            }
+          ]
+        }
+      ],
+      "label": "This shape is for..."
+    }
+  ]
+}

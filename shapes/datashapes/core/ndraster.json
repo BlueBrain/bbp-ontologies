@@ -1,0 +1,187 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/ndraster/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/ndraster",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/ndraster/shapes/NdRasterShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "List of dimensions, spectral (components), spatial or temporal, in the order of encoding in the buffer, from the fastest axis to the slowest axis.",
+              "minCount": 1,
+              "name": "Dimensions",
+              "path": "nsg:dimension"
+            },
+            {
+              "description": "Column major matrix to perform the affine transformation from voxel position to world position. In world position, the measurement unit is 'spatialUnit'. The size of this matrix is numberOfSpatialDimensions x numberOfSpatialDimensions.",
+              "name": "World matrix",
+              "path": "nsg:worldMatrix"
+            },
+            {
+              "description": "Description of what kind of element a sample (pixel or voxel) represent. It can be an intensity, a RGB color, a vector 2D or 3D, a quaternio, a label, a binary mask, etc.",
+              "in": [
+                "intensity",
+                "multispectralIntensity",
+                "label",
+                "mask",
+                "vector"
+              ],
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Sample type",
+              "path": "nsg:sampleType"
+            },
+            {
+              "description": "Encoding type of each component within a sample (pixels or voxels), if we have multiple components such as in RGB, vectors or quaternions, the componentDataType is applicable to each component. Ex: 'uint8', 'float32'",
+              "in": [
+                "ascii",
+                "uint8",
+                "int8",
+                "uint16",
+                "int16",
+                "uint32",
+                "int32",
+                "uint64",
+                "int64",
+                "float16",
+                "float32",
+                "float64"
+              ],
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Component Encoding",
+              "path": "nsg:componentEncoding"
+            },
+            {
+              "description": "Endianness of the encoding, applicable for all componentDataType but not usefull for uint8 int8 and ascii",
+              "in": [
+                "little",
+                "big"
+              ],
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Endianness",
+              "path": "nsg:endianness"
+            },
+            {
+              "description": "Encoding of the data part of the dataset (not the header)",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Buffer Encoding",
+              "or": [
+                {
+                  "in": [
+                    "ascii",
+                    "raw",
+                    "gzip",
+                    "bzip2"
+                  ]
+                },
+                {
+                  "datatype": "xsd:string"
+                }
+              ],
+              "path": "nsg:bufferEncoding"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Format of the file, by its extension ('nrrd', 'png', etc.)",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "File Extension",
+              "path": "nsg:fileExtension"
+            }
+          ]
+        }
+      ],
+      "label": "Definition of n-dimensional raster dataset",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:NdRaster"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/ndraster/shapes/DimensionShape",
+      "@type": "NodeShape",
+      "label": "Generic Dimension shape"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/ndraster/shapes/TimeDimensionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:DimensionShape"
+        },
+        {}
+      ],
+      "class": "nsg:TimeDimension",
+      "label": "Time Dimension shape"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/ndraster/shapes/SpaceDimensionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:DimensionShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Unit of space used to qualify the sampling.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Space Unit",
+              "or": [
+                {
+                  "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape"
+                },
+                {
+                  "datatype": "xsd:string"
+                }
+              ],
+              "path": "schema:unitCode"
+            }
+          ]
+        }
+      ],
+      "class": "nsg:SpaceDimension",
+      "label": "Space Dimension shape",
+      "seeAlso": "http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/ndraster/shapes/ComponentDimensionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:DimensionShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:string",
+              "description": "The name of the component (whether it's a color, a vector, a quaternion, etc.)",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Name",
+              "path": "schema:name"
+            }
+          ]
+        }
+      ],
+      "class": "nsg:ComponentDimension",
+      "label": "Component Dimension shape"
+    }
+  ]
+}

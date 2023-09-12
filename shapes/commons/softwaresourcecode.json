@@ -1,0 +1,66 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/softwaresourcecode/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/softwaresourcecode",
+  "@type": "Schema",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/softwaresourcecode/shapes/SoftwareSourceCodeShape",
+      "@type": "NodeShape",
+      "property": [
+        {
+          "description": "Link to the repository where the un-compiled, human readable code and related code is located (SVN, github, CodePlex).",
+          "name": "Code repository",
+          "nodeKind": "sh:IRI",
+          "path": "schema:codeRepository"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "The computer programming language.",
+          "name": "Programming language",
+          "path": "schema:programmingLanguage"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "Runtime platform or script interpreter dependencies (Example - Java v1, Python2.3, .Net Framework 3.0).",
+          "name": "Runtime platform",
+          "path": "schema:runtimePlatform"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "The version of the CreativeWork embodied by a specified resource.",
+          "name": "Software version",
+          "path": "schema:version"
+        },
+        {
+            "datatype": "xsd:string",
+            "description": "The command used to execute the task.",
+            "name": "Command",
+            "path": "bmo:command"
+        },
+        {
+            "datatype": "xsd:string",
+            "description": "Name of a branch to fetch.",
+            "name": "Branch",
+            "path": "bmo:branch"
+        },
+        {
+            "datatype": "xsd:string",
+            "description": "SHA hash (or PREFIX) of a commit to fetch.",
+            "name": "Commit",
+            "path": "bmo:commit"
+        },
+        {
+            "datatype": "xsd:string",
+            "description": "Name of tag to fetch.",
+            "name": "Tag",
+            "path": "bmo:tag"
+        }
+      ]
+    }
+  ]
+}

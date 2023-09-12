@@ -1,0 +1,88 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/electrophysiologyfeatureoptimisationparameter/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/electrophysiologyfeatureoptimisationparameter",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/subject",
+    "nsg:commons/entity",
+    "nsg:commons/quantitativevalue"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/electrophysiologyfeatureoptimisationparameter/shapes/ElectrophysiologyFeatureOptimisationParameterShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:Subject",
+              "description": "The subject information (e.g. species).",
+              "name": "Subject",
+              "path": "nsg:subject"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "The e-model",
+              "name": "E-model",
+              "path": "nsg:eModel"
+            },
+            {
+              "description": "Parameter",
+              "name": "Parameter",
+              "node": "this:ParameterShape",
+              "path": "nsg:parameter"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Sub cellular mechanism",
+              "name": "Sub cellular mechanism",
+              "path": "nsg:subCellularMechanism"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Cellular location",
+              "name": "Cellular location",
+              "path": "nsg:location"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Channel distribution",
+              "name": "Channel distribution",
+              "path": "nsg:channelDistribution"
+            }
+          ]
+        }
+      ],
+      "nodeKind": "sh:IRI",
+      "targetClass": "nsg:ElectrophysiologyFeatureOptimisationParameter"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/electrophysiologyfeatureoptimisationparameter/shapes/ParameterShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/quantitativevalue/shapes/RangeQuantitativeValueShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:string",
+              "description": "Parameter name",
+              "name": "Parameter name",
+              "path": "schema:name"
+            }
+          ]
+        }
+      ],
+      "label": "Parameter shape definition"
+    }
+  ]
+}

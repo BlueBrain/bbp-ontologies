@@ -1,0 +1,64 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/annotatedslice/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/annotatedslice",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/quantitativevalue"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/morphology/src/main/resources/schemas/neurosciencegraph/morphology/annotatedslice/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/annotatedslice/shapes/AnnotatedSliceShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Angle at which the slice is as defined during the annotation process.",
+              "maxCount": 1,
+              "name": "Annotation angle",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:annotationAngle"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Comments added by the annotator during the annotation process.",
+              "maxCount": 1,
+              "name": "Annotator comment",
+              "path": "nsg:annotatorComment"
+            },
+            {
+              "class": "nsg:LabeledCellCollection",
+              "description": "The collections of labeled cells.",
+              "minCount": 1,
+              "name": "Patched cell collection",
+              "path": "schema:hasPart",
+              "seeAlso": "nsg:dash/labeledcellcollection/shapes/LabeledCellCollectionShape"
+            },
+            {
+              "class": "nsg:FixedStainedSlice",
+              "description": "The FixedStainedSlice this AnnotatedSlice is a revision of.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Fixed stained slice",
+              "path": "prov:wasRevisionOf",
+              "seeAlso": "nsg:dash/fixedstainedslice/shapes/FixedStainedSliceShape"
+            }
+          ]
+        }
+      ],
+      "label": "Annotated slice shape definition",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:AnnotatedSlice"
+    }
+  ]
+}

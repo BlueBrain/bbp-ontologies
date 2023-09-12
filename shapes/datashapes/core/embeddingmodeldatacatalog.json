@@ -1,0 +1,40 @@
+{
+  "@context": "https://incf.github.io/neuroshapes/contexts/schema.json",
+  "@id": "https://bbp.epfl.ch/shapes/dash/embeddingmodeldatacatalog",
+  "@type": "Schema",
+  "imports": [
+    "https://bbp.epfl.ch/shapes/commons/datacatalog"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/embeddingmodeldatacatalog/shapes/EmbeddingModelDataCatalogShape",
+      "@type": "NodeShape",
+      "description": "Embedding Model Data Catalog",
+      "nodeKind": "sh:IRI",
+      "targetClass": "bmo:EmbeddingModelDataCatalog",
+      "and": [
+        {
+          "node": "https://bbp.epfl.ch/shapes/commons/datacatalog/shapes/DataCatalogShape"
+        },
+        {
+          "property": [
+            {
+              "nodeKind": "sh:IRI",
+              "description": "The type of the data embedded by the model",
+              "name": "Target Resource Type",
+              "path": "bmo:targetResourceType",
+              "maxCount": 1,
+              "minCount": 1
+            },
+            {
+              "description": "Sub-parts of the catalog.",
+              "name": "Has part",
+              "path": "schema:hasPart",
+              "class": "nsg:EmbeddingModel"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

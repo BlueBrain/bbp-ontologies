@@ -1,0 +1,155 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/imagestack/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/imagestack",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/imagestack/v1.0.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/imagestack/shapes/ImageStackShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:string",
+              "description": "Modality of the image stack",
+              "maxCount": 1,
+              "name": "Image modality",
+              "path": "nsg:imageModality"
+            },
+            {
+              "description": "Slicing plane of the brain",
+              "in": [
+                "Sagittal",
+                "Coronal",
+                "Axial"
+              ],
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Slicing plane",
+              "path": "nsg:slicingPlane"
+            },
+            {
+              "datatype": "xsd:integer",
+              "description": "Width of the 2D slices, to be provided only if all the slices are the same width within the stack.",
+              "maxCount": 1,
+              "name": "Fixed Slice width",
+              "path": "nsg:fixedSliceWidth"
+            },
+            {
+              "datatype": "xsd:integer",
+              "description": "Height of the 2D slices, to be provided only if all the slices are the same width within the stack.",
+              "maxCount": 1,
+              "name": "Fixed Slice height",
+              "path": "nsg:fixedSliceHeight"
+            },
+            {
+              "description": "Resolution of the 2D slice",
+              "maxCount": 1,
+              "name": "Slice resolution",
+              "node": "this:SliceResolutionShape",
+              "path": "nsg:sliceResolution"
+            },
+            {
+              "datatype": "xsd:integer",
+              "description": "Number of slices of the image stack",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Number of slices",
+              "path": "nsg:numberOfSlices"
+            },
+            {
+              "description": "Interval at which individual slices in a stack of slices were sampled by the imaging method.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Slice interval",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:sliceInterval"
+            },
+            {
+              "description": "Anatomical direction within slices, from the left to the right of the slice.",
+              "in": [
+                "anterior-posterior",
+                "posterior-anterior",
+                "inferior-superior",
+                "superior-inferior",
+                "left-right",
+                "right-left"
+              ],
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Width Anatomical Direction",
+              "path": "nsg:widthAnatomicalDirection"
+            },
+            {
+              "description": "Anatomical direction within slices, from the top to the bottom of the slice.",
+              "in": [
+                "anterior-posterior",
+                "posterior-anterior",
+                "inferior-superior",
+                "superior-inferior",
+                "left-right",
+                "right-left"
+              ],
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Height Anatomical Direction",
+              "path": "nsg:heightAnatomicalDirection"
+            },
+            {
+              "description": "Anatomical direction of the stack, from the begining to the end of the stack based on the order of the slice (by index or alphabetical).",
+              "in": [
+                "anterior-posterior",
+                "posterior-anterior",
+                "inferior-superior",
+                "superior-inferior",
+                "left-right",
+                "right-left"
+              ],
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Stack Anatomical Direction",
+              "path": "nsg:stackAnatomicalDirection"
+            }
+          ]
+        }
+      ],
+      "label": "Image stack",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:ImageStack"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/imagestack/shapes/SliceResolutionShape",
+      "@type": "NodeShape",
+      "property": [
+        {
+          "description": "Slice resolution in width",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Width resolution",
+          "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+          "path": "nsg:widthResolution"
+        },
+        {
+          "description": "Slice height",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Height resolution",
+          "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+          "path": "nsg:heightResolution"
+        }
+      ]
+    }
+  ]
+}

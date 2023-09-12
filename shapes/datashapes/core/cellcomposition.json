@@ -1,0 +1,59 @@
+{
+    "@context": [
+      "https://incf.github.io/neuroshapes/contexts/schema.json"
+    ],
+    "@id": "https://neuroshapes.org/dash/cellcomposition",
+    "@type": "Schema",
+    "imports": [
+      "nsg:commons/entity",
+      "nsg:commons/brainlocation",
+      "nsg:commons/contribution",
+      "nsg:commons/distribution"
+    ],
+    "shapes": [
+      {
+        "@id": "https://neuroshapes.org/dash/cellcomposition/shapes/CellCompositionShape",
+        "@type": "NodeShape",
+        "and": [
+          {
+            "node": "nsg:commons/entity/shapes/EntityShape"
+          },
+          {
+            "property": [
+              {
+                "description": "Brain location information of the density (e.g. a specific cortical layer).",
+                "name": "Brain location",
+                "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
+                "path": "nsg:brainLocation"
+              },
+               {
+              "maxCount": 1,
+              "minCount": 1,
+              "nodeKind": "sh:IRI",
+              "path": "nsg:atlasRelease"
+               },
+              {
+                "description": "The statistical summary of the cell composition (counts and averages).",
+                "minCount": 1,
+                "name": "Cell composition summary",
+                "seeAlso": "https://neuroshapes.org/dash/cellcompositionsummary/shapes/CellCompositionSummary",
+                "class":"bmo:CellCompositionSummary",
+                "path": "bmo:cellCompositionSummary"
+              },
+              {
+                "description": "Densities of cells distributed as volumes.",
+                "minCount": 1,
+                "name": "Cell Density composition volume",
+                "seeAlso": "https://neuroshapes.org/dash/cellcompositionvolume/shapes/CellCompositionVolumeShape",
+                "class":"bmo:CellCompositionVolume",
+                "path": "bmo:cellCompositionVolume"
+              }
+            ]
+          }
+        ],
+        "label": "CellComposition shape definition",
+        "nodeKind": "sh:BlankNodeOrIRI",
+        "targetClass": "bmo:CellComposition"
+      }
+    ]
+  }

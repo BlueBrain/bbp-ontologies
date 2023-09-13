@@ -1,8 +1,6 @@
 Blue Brain Project Ontologies
 =============================
 
-|Github_build_badge|
-
 Funding & Acknowledgments
 -------------------------
 The development of this software was supported by funding to the Blue Brain Project, a research center of the École polytechnique fédérale de Lausanne (EPFL),

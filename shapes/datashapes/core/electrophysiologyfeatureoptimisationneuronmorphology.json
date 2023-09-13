@@ -1,0 +1,67 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/electrophysiologyfeatureoptimisationneuronmorphology/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/electrophysiologyfeatureoptimisationneuronmorphology",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/subject",
+    "nsg:commons/entity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/electrophysiologyfeatureoptimisationneuronmorphology/shapes/ElectrophysiologyFeatureOptimisationNeuronMorphologyShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:Subject",
+              "description": "The subject information (e.g. species).",
+              "name": "Subject",
+              "path": "nsg:subject"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "The e-model",
+              "name": "E-model",
+              "path": "nsg:eModel"
+            },
+            {
+              "class": "nsg:NeuronMorphology",
+              "description": "Experimental neuron morphology used for optimisation",
+              "name": "Neuron morphology",
+              "path": "nsg:morphology"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Section list names",
+              "name": "Section list names",
+              "path": "nsg:sectionListNames"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Section array names",
+              "name": "Section array names",
+              "path": "nsg:sectionArrayNames"
+            },
+            {
+              "datatype": "xsd:integer",
+              "description": "Section index",
+              "name": "Section index",
+              "path": "nsg:sectionIndex"
+            }
+          ]
+        }
+      ],
+      "nodeKind": "sh:IRI",
+      "targetClass": "nsg:ElectrophysiologyFeatureOptimisationNeuronMorphology"
+    }
+  ]
+}

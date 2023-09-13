@@ -1,0 +1,38 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/slicecollection/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/slicecollection",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/slicecollection"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/slicecollection/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/slicecollection/shapes/SliceCollectionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/slicecollection/shapes/SliceCollectionShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:LabeledCell",
+              "description": "Labeled cell which is contained within the collection of slices. Through the cutting of the brain into slices, the labeled cell gets cut as well and different parts are contained within different slices.",
+              "name": "Has part",
+              "path": "schema:hasPart"
+            }
+          ]
+        }
+      ],
+      "comment": "Slice collection.",
+      "label": "Slice Collection",
+      "targetClass": "nsg:SliceCollection"
+    }
+  ]
+}

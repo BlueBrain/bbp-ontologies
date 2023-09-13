@@ -1,0 +1,44 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://provshapes.org/commons/derivation/shapes/"
+    }
+  ],
+  "@id": "https://provshapes.org/commons/derivation",
+  "@type": "Schema",
+  "prov:wasDerivedFrom": "https://github.com/BlueBrain/nexus-prov/blob/v1.2.0/modules/prov/src/main/resources/schemas/nexus/provsh/derivation/v1.0.0.json",
+  "shapes": [
+    {
+      "@id": "https://provshapes.org/commons/derivation/shapes/DerivationShape",
+      "@type": "NodeShape",
+      "comment": "A derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity.",
+      "label": "Entity derivation shape",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "property": [
+        {
+          "class": "prov:Entity",
+          "description": "An entity from which the current one derived from.",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Entity",
+          "path": "prov:entity"
+        },
+        {
+          "class": "prov:Activity",
+          "description": "The optional activity that used the entity from which the current one derived from.",
+          "maxCount": 1,
+          "name": "Activity",
+          "path": "prov:hadActivity"
+        },
+        {
+          "class": "prov:Usage",
+          "description": "Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity..",
+          "maxCount": 1,
+          "name": "Usage",
+          "path": "prov:hadUsage"
+        }
+      ]
+    }
+  ]
+}

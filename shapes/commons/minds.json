@@ -1,0 +1,78 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/minds/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/minds",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/subject",
+    "nsg:commons/brainlocation",
+    "nsg:commons/distribution",
+    "nsg:commons/typedlabeledontologyterm",
+    "nsg:commons/entity",
+    "nsg:commons/annotation"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/minds/shapes/MINDSShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The dataset release date.",
+              "maxCount": 1,
+              "name": "Release date",
+              "path": "schema:releaseDate"
+            },
+            {
+              "description": "The dataset type.",
+              "minCount": 1,
+              "name": "Type",
+              "nodeKind": "sh:IRI",
+              "path": "rdf:type"
+            },
+            {
+              "maxCount": 1,
+              "path": "nsg:isRegisteredIn"
+            },
+            {
+              "maxCount": 1,
+              "path": "nsg:atlasRelease"
+            },
+            {
+              "minCount": 1,
+              "path": "nsg:subject"
+            },
+            {
+              "minCount": 1,
+              "path": "nsg:brainLocation"
+            },
+            {
+              "class": "nsg:Contribution",
+              "minCount": 1,
+              "path": "nsg:contribution"
+            },
+            {
+              "minCount": 1,
+              "path": "schema:distribution"
+            }
+          ]
+        }
+      ],
+      "label": "Minimum Information about a Neuroscience DataSet",
+      "nodeKind": "sh:IRI",
+      "seeAlso": [
+        "https://www.w3.org/TR/vocab-dcat",
+        "https://schema.org",
+        "https://www.w3.org/TR/prov-o"
+      ]
+    }
+  ]
+}

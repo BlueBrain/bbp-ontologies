@@ -1,0 +1,841 @@
+@prefix : <http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/> .
+@prefix GO: <http://purl.obolibrary.org/obo/GO_> .
+@prefix RS: <http://purl.obolibrary.org/obo/RS_> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix et: <https://bbp.epfl.ch/neurosciencegraph/ontologies/etypes/> .
+@prefix mt: <https://bbp.epfl.ch/neurosciencegraph/ontologies/mtypes/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix EFO: <http://www.ebi.ac.uk/efo/EFO_> .
+@prefix bmc: <https://bbp.epfl.ch/ontologies/core/bmc/> .
+@prefix bmo: <https://bbp.epfl.ch/ontologies/core/bmo/> .
+@prefix efe: <https://bbp.epfl.ch/ontologies/core/efeatures/> .
+@prefix ilx: <http://uri.interlex.org/base/ilx_> .
+@prefix mso: <https://bbp.epfl.ch/ontologies/core/molecular-systems/> .
+@prefix nsg: <https://neuroshapes.org/> .
+@prefix nxv: <https://bluebrain.github.io/nexus/vocabulary/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix shsh: <http://www.w3.org/ns/shacl-shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix stim: <https://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix schema: <http://schema.org/> .
+@prefix uberon: <http://purl.obolibrary.org/obo/UBERON_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix NCBITaxon: <http://purl.obolibrary.org/obo/NCBITaxon_> .
+@prefix datashapes: <https://neuroshapes.org/dash/> .
+@prefix commonshapes: <https://neuroshapes.org/commons/> .
+@prefix NCBITaxon_TAXON: <http://purl.obolibrary.org/obo/NCBITaxon#_> .
+@base <http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/> .
+
+<http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/> rdf:type owl:Ontology ;
+                                                                  rdfs:label "Stimulus Types"@en ;
+                                                                  <http://www.w3.org/2004/02/skos/core#definition> "An ontology of Stimulus Types. Stimuli are current patterns injected into e.g. a neuron to obtain its electrical signature."@en ;
+                                                                  <http://www.w3.org/2004/02/skos/core#prefLabel> "Stimulus Types"@en ;
+                                                                  <https://neuroshapes.org/defines> :ADHPdepol ,
+                                                                                                    :ADHPhyperpol ,
+                                                                                                    :ADHPrest ,
+                                                                                                    :APDrop ,
+                                                                                                    :APResh ,
+                                                                                                    :APThreshold ,
+                                                                                                    :APWaveform ,
+                                                                                                    :C1HP1sec ,
+                                                                                                    :C1_HP_0.5sec ,
+                                                                                                    :C1_HP_1sec ,
+                                                                                                    :C1step_1sec ,
+                                                                                                    :C1step_ag ,
+                                                                                                    :C1step_highres ,
+                                                                                                    :DeHyperPol ,
+                                                                                                    :Delta ,
+                                                                                                    :ElecCal ,
+                                                                                                    :FirePattern ,
+                                                                                                    :H20S8 ,
+                                                                                                    :HighResThResp ,
+                                                                                                    :HyperDePol ,
+                                                                                                    :IDRest ,
+                                                                                                    :IDRestTest ,
+                                                                                                    :IDThres ,
+                                                                                                    :IDdepol ,
+                                                                                                    :IDhyperpol ,
+                                                                                                    :IDrest ,
+                                                                                                    :IDthresh ,
+                                                                                                    :IRdepol ,
+                                                                                                    :IRhyperpol ,
+                                                                                                    :IRrest ,
+                                                                                                    :IV ,
+                                                                                                    :IV_Test ,
+                                                                                                    :NegCheops ,
+                                                                                                    :NegCheops1 ,
+                                                                                                    :NegCheops2 ,
+                                                                                                    :NegCheops3 ,
+                                                                                                    :NegCheops4 ,
+                                                                                                    :NegCheops5 ,
+                                                                                                    :NoiseOU3 ,
+                                                                                                    :NoisePP ,
+                                                                                                    :NoiseSpiking ,
+                                                                                                    :PosCheops ,
+                                                                                                    :RPip ,
+                                                                                                    :RSealClose ,
+                                                                                                    :RSealOpen ,
+                                                                                                    :Rac ,
+                                                                                                    :ResetITC ,
+                                                                                                    :SAPThres1 ,
+                                                                                                    :SAPThres2 ,
+                                                                                                    :SAPThres3 ,
+                                                                                                    :SAPTres1 ,
+                                                                                                    :SAPTres2 ,
+                                                                                                    :SAPTres3 ,
+                                                                                                    :SAPWaveform ,
+                                                                                                    :SDelta ,
+                                                                                                    :SIDRest ,
+                                                                                                    :SIDThres ,
+                                                                                                    :SIDTres ,
+                                                                                                    :SIV ,
+                                                                                                    :SNoisePP ,
+                                                                                                    :SNoiseSpiking ,
+                                                                                                    :SRac ,
+                                                                                                    :SResetITC ,
+                                                                                                    :SSineSpec ,
+                                                                                                    :SSpikeRec ,
+                                                                                                    :SSponAPs ,
+                                                                                                    :SSponHold ,
+                                                                                                    :SSponNoHold ,
+                                                                                                    :STesteCode ,
+                                                                                                    :STrueNoise ,
+                                                                                                    :SetAmpl ,
+                                                                                                    :SetISI ,
+                                                                                                    :SetISITest ,
+                                                                                                    :SineSpec ,
+                                                                                                    :SpikeRec ,
+                                                                                                    :SpikeRec_Ih ,
+                                                                                                    :SpikeRec_Kv1.1 ,
+                                                                                                    :SponAPs ,
+                                                                                                    :SponHold25 ,
+                                                                                                    :SponHold3 ,
+                                                                                                    :SponHold30 ,
+                                                                                                    :SponNoHold20 ,
+                                                                                                    :SponNoHold30 ,
+                                                                                                    :SpontAPs ,
+                                                                                                    :Spontaneous ,
+                                                                                                    :SsAHP ,
+                                                                                                    :StartHold ,
+                                                                                                    :StartNoHold ,
+                                                                                                    :StartStandeCode ,
+                                                                                                    :Step ,
+                                                                                                    :SubWhiteNoise ,
+                                                                                                    :TestAmpl ,
+                                                                                                    :TestRheo ,
+                                                                                                    :TestSpikeRec ,
+                                                                                                    :Test_eCode ,
+                                                                                                    :TesteCode ,
+                                                                                                    :TrueNoise ,
+                                                                                                    :Truenoise ,
+                                                                                                    :VacuumPulses ,
+                                                                                                    :WhiteNoise ,
+                                                                                                    :pulser ,
+                                                                                                    :sAHP ,
+                                                                                                    <https://neuroshapes.org/BlueBrainStimulus> ,
+                                                                                                    <https://neuroshapes.org/LNMCStimulus> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://schema.org/description
+<http://schema.org/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+<http://purl.org/dc/elements/1.1/rights> rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/license
+schema:license rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:label "license"@en ;
+               skos:altLabel "license"@en .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+<http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
+
+
+###  https://neuroshapes.org/defines
+<https://neuroshapes.org/defines> rdf:type owl:AnnotationProperty ;
+                                  rdfs:label "defines"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPdepol
+:ADHPdepol rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "ADHPdepol"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPhyperpol
+:ADHPhyperpol rdf:type owl:Class ;
+              rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+              rdfs:label "ADHPhyperpol"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ADHPrest
+:ADHPrest rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "ADHPrest"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APDrop
+:APDrop rdf:type owl:Class ;
+        rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+        rdfs:label "APDrop"@en ;
+        <http://www.w3.org/2004/02/skos/core#definition> "For the APDrop (action potential drop) stimulus, a strong depolarizing current pulse is injected to elicit more than 10 action potentials. It is used to compare the amplitude of the first with the amplitude of the second action potential and with respect to the steady-state amplitude."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APResh
+:APResh rdf:type owl:Class ;
+        rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+        rdfs:label "APResh"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APThreshold
+:APThreshold rdf:type owl:Class ;
+             rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+             rdfs:label "APThreshold"@en ;
+             <http://www.w3.org/2004/02/skos/core#definition> "For the APThreshold (action potential threshold) stimulus, a ramp current is injected with the goal to evoke at least one action potential. The APThreshold stimulus is used to measure threshold voltage and current for eliciting one action potential."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/APWaveform
+:APWaveform rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+            rdfs:label "APWaveform"@en ;
+            <http://www.w3.org/2004/02/skos/core#definition> "For the APWaveform (action potential waveform) stimulus, a sequence of square pulses of different current intensities is injected, typically evoking two or more action potentials for higher current intensities. The APWaveform stimulus is used to measure action potential properties such as amplitude, shape, rise-time and fall-time."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/C1HP1sec
+:C1HP1sec rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "C1HP1sec"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/C1_HP_0.5sec
+:C1_HP_0.5sec rdf:type owl:Class ;
+              rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+              rdfs:label "C1_HP_0.5sec"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/C1_HP_1sec
+:C1_HP_1sec rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "C1_HP_1sec"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/C1step_1sec
+:C1step_1sec rdf:type owl:Class ;
+             rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+             rdfs:label "C1step_1sec"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/C1step_ag
+:C1step_ag rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "C1step_ag"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/C1step_highres
+:C1step_highres rdf:type owl:Class ;
+                rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+                rdfs:label "C1step_highres"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/DeHyperPol
+:DeHyperPol rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "DeHyperPol"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Delta
+:Delta rdf:type owl:Class ;
+       rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+       rdfs:label "Delta"@en ;
+       <http://www.w3.org/2004/02/skos/core#definition> "For the Delta stimulus, a very brief hyperpolarizing current pulse is injected and the DAC scale is adjusted to obtain a -100 to -110 mV voltage response of the cell. The Delta stimulus is used to measure the time constant of the membrane."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ElecCal
+:ElecCal rdf:type owl:Class ;
+         rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+         rdfs:label "ElecCal"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/FirePattern
+:FirePattern rdf:type owl:Class ;
+             rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+             rdfs:label "FirePattern"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/H20S8
+:H20S8 rdf:type owl:Class ;
+       rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+       rdfs:label "H20S8"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/HighResThResp
+:HighResThResp rdf:type owl:Class ;
+               rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+               rdfs:label "HighResThResp"@en ;
+               <http://www.w3.org/2004/02/skos/core#definition> "For the HighResThResp (high resolution threshold response) stimulus, a single square pulse is injected to evoke one action potential. It is used to assess the shape of the after-hyperpolarization potential. The HighResThRespo is synonymous to the TesteCode."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/HyperDePol
+:HyperDePol rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "HyperDePol"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRest
+:IDRest rdf:type owl:Class ;
+        rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+        rdfs:label "IDRest"@en ;
+        <http://www.w3.org/2004/02/skos/core#definition> "For the IDrest stimulus, a sequence of depolarizing square pulses is injected, typically making the cell fire up to saturation. The IDrest stimulus is used to define firing properties of the cell which are used to help determine the cell type."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDRestTest
+:IDRestTest rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "IDRestTest"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDThres
+:IDThres rdf:type owl:Class ;
+         rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+         rdfs:label "IDThres"@en ;
+         rdfs:seeAlso :IDthresh .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDdepol
+:IDdepol rdf:type owl:Class ;
+         rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+         rdfs:label "IDdepol"@en ;
+         <http://www.w3.org/2004/02/skos/core#definition> "For the IDdepol (current discharge at depolarization) stimulus, a sequence of depolarizing square pulses up to cell firing frequency saturation is injected following a depolarizing step. It is used to measure firing frequency as a function of injected current."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDhyperpol
+:IDhyperpol rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+            rdfs:label "IDhyperpol"@en ;
+            <http://www.w3.org/2004/02/skos/core#definition> "The IDhyperpol (current discharge at hyperpolarization) stimulus, a sequence of depolarizing square pulses up to cell firing frequency saturation is injected following a hyperpolarizing step. It is used to measure firing frequency as a function of injected current."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDrest
+:IDrest rdf:type owl:Class ;
+        rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+        rdfs:label "IDrest"@en ;
+        rdfs:seeAlso :IDRest .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IDthresh
+:IDthresh rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+          rdfs:label "IDthresh"@en ;
+          <http://www.w3.org/2004/02/skos/core#definition> "For the IDthresh (IDthreshold) stimulus, a sequence of square pulses close to the spiking threshold of the cell is being injected, typically evoking no or only few action potentials. The IDthresh stimulus is used to determine the cell's spiking threshold and to evaluate its firing pattern close to threshold"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRdepol
+:IRdepol rdf:type owl:Class ;
+         rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+         rdfs:label "IRdepol"@en ;
+         <http://www.w3.org/2004/02/skos/core#definition> "The IRdepol (input resistance at depolarization) stimulus is used to measure the input resistance and time constant of the cell at depolarization through a small hyperpolarization following pre-depolarization."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRhyperpol
+:IRhyperpol rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+            rdfs:label "IRhyperpol"@en ;
+            <http://www.w3.org/2004/02/skos/core#definition> "The IRhyperpol (input resistance at hyperpolarization) stimulus is used to measure the input resistance and time constant of the cell at hyperpolarization through a small hyperpolarization following pre-hyperpolarization."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IRrest
+:IRrest rdf:type owl:Class ;
+        rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+        rdfs:label "IRrest"@en ;
+        <http://www.w3.org/2004/02/skos/core#definition> "The IRrest (input resistance at rest) stimulus is used to measure the input resistance and time constant of the cell at rest by injecting hyperpolarizing step currents to evoke multiple action potentials."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IV
+:IV rdf:type owl:Class ;
+    rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+    rdfs:label "IV"@en ;
+    <http://www.w3.org/2004/02/skos/core#definition> "For the IV (current-voltage relationship) stimulus, a sequence of current steps ranging from hyperpolarizing to depolarizing intensities is injected without evoking action potentials. The IV stimulus is used to measure the input resistance."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/IV_Test
+:IV_Test rdf:type owl:Class ;
+         rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+         rdfs:label "IV_Test"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/NegCheops
+:NegCheops rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "NegCheops"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/NegCheops1
+:NegCheops1 rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "NegCheops1"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/NegCheops2
+:NegCheops2 rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "NegCheops2"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/NegCheops3
+:NegCheops3 rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "NegCheops3"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/NegCheops4
+:NegCheops4 rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "NegCheops4"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/NegCheops5
+:NegCheops5 rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "NegCheops5"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/NoiseOU3
+:NoiseOU3 rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "NoiseOU3"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/NoisePP
+:NoisePP rdf:type owl:Class ;
+         rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+         rdfs:label "NoisePP"@en ;
+         <http://www.w3.org/2004/02/skos/core#definition> "The NoisePP stimulus is identical to the NoiseSpiking stimulus with the difference that it uses a lower amplitude (50%). Typically, one action potential is evoked and it is used to assess passive properties of the cell."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/NoiseSpiking
+:NoiseSpiking rdf:type owl:Class ;
+              rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+              rdfs:label "NoiseSpiking"@en ;
+              <http://www.w3.org/2004/02/skos/core#definition> "For the NoiseSpiking stimulus, Gaussian noise low-pass filtered at 1% is injected (10 repetitions) to evoke more than three action potentials to measure the clock properties of the cell and to assess response deviations between stimulus repetitions."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/PosCheops
+:PosCheops rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "PosCheops"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/RPip
+:RPip rdf:type owl:Class ;
+      rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+      rdfs:label "RPip"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/RSealClose
+:RSealClose rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "RSealClose"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/RSealOpen
+:RSealOpen rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "RSealOpen"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Rac
+:Rac rdf:type owl:Class ;
+     rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+     rdfs:label "Rac"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/ResetITC
+:ResetITC rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "ResetITC"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SAPThres1
+:SAPThres1 rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "SAPThres1"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SAPThres2
+:SAPThres2 rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "SAPThres2"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SAPThres3
+:SAPThres3 rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "SAPThres3"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SAPTres1
+:SAPTres1 rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "SAPTres1"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SAPTres2
+:SAPTres2 rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "SAPTres2"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SAPTres3
+:SAPTres3 rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "SAPTres3"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SAPWaveform
+:SAPWaveform rdf:type owl:Class ;
+             rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+             rdfs:label "SAPWaveform"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SDelta
+:SDelta rdf:type owl:Class ;
+        rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+        rdfs:label "SDelta"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SIDRest
+:SIDRest rdf:type owl:Class ;
+         rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+         rdfs:label "SIDRest"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SIDThres
+:SIDThres rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "SIDThres"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SIDTres
+:SIDTres rdf:type owl:Class ;
+         rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+         rdfs:label "SIDTres"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SIV
+:SIV rdf:type owl:Class ;
+     rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+     rdfs:label "SIV"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SNoisePP
+:SNoisePP rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "SNoisePP"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SNoiseSpiking
+:SNoiseSpiking rdf:type owl:Class ;
+               rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+               rdfs:label "SNoiseSpiking"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SRac
+:SRac rdf:type owl:Class ;
+      rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+      rdfs:label "SRac"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SResetITC
+:SResetITC rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "SResetITC"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SSineSpec
+:SSineSpec rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "SSineSpec"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SSpikeRec
+:SSpikeRec rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "SSpikeRec"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SSponAPs
+:SSponAPs rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "SSponAPs"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SSponHold
+:SSponHold rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "SSponHold"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SSponNoHold
+:SSponNoHold rdf:type owl:Class ;
+             rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+             rdfs:label "SSponNoHold"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/STesteCode
+:STesteCode rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "STesteCode"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/STrueNoise
+:STrueNoise rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "STrueNoise"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SetAmpl
+:SetAmpl rdf:type owl:Class ;
+         rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+         rdfs:label "SetAmpl"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SetISI
+:SetISI rdf:type owl:Class ;
+        rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+        rdfs:label "SetISI"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SetISITest
+:SetISITest rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "SetISITest"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SineSpec
+:SineSpec rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+          rdfs:label "SineSpec"@en ;
+          <http://www.w3.org/2004/02/skos/core#definition> " For the SineSpec stimulus, current in the shape of a sine wave with increasing frequency is injected below firing threshold to assess how fast the cell can follow the change."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SpikeRec
+:SpikeRec rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+          rdfs:label "SpikeRec"@en ;
+          <http://www.w3.org/2004/02/skos/core#definition> "For the SpikeRec stimulus, a sequence of brief depolarizing currents with increasing interval is being injected, typically evoking first one and then two action potentials. The SpikeRec stimulus is used to assess the action potential recovery."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SpikeRec_Ih
+:SpikeRec_Ih rdf:type owl:Class ;
+             rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+             rdfs:label "SpikeRec_Ih"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SpikeRec_Kv1.1
+:SpikeRec_Kv1.1 rdf:type owl:Class ;
+                rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+                rdfs:label "SpikeRec_Kv1.1"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SponAPs
+:SponAPs rdf:type owl:Class ;
+         rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+         rdfs:label "SponAPs"@en ;
+         rdfs:seeAlso :SpontAPs .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SponHold25
+:SponHold25 rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "SponHold25"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SponHold3
+:SponHold3 rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "SponHold3"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SponHold30
+:SponHold30 rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "SponHold30"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SponNoHold20
+:SponNoHold20 rdf:type owl:Class ;
+              rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+              rdfs:label "SponNoHold20"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SponNoHold30
+:SponNoHold30 rdf:type owl:Class ;
+              rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+              rdfs:label "SponNoHold30"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SpontAPs
+:SpontAPs rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+          rdfs:label "SpontAPs"@en ;
+          <http://www.w3.org/2004/02/skos/core#definition> "For the SpontAPs (spontaneous action potentials) stimulus, small current pulses close to but below the firing threshold are injected. In the presence of EPSPs, this results in a few action potentials. This stimulus is used to assess the spontaneous activity of the cell."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Spontaneous
+:Spontaneous rdf:type owl:Class ;
+             rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+             rdfs:label "Spontaneous"@en ;
+             <http://www.w3.org/2004/02/skos/core#definition> "Spontaneous recordings are used to assess input connectivity to other cells. No current is injected."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SsAHP
+:SsAHP rdf:type owl:Class ;
+       rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+       rdfs:label "SsAHP"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/StartHold
+:StartHold rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "StartHold"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/StartNoHold
+:StartNoHold rdf:type owl:Class ;
+             rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+             rdfs:label "StartNoHold"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/StartStandeCode
+:StartStandeCode rdf:type owl:Class ;
+                 rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+                 rdfs:label "StartStandeCode"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Step
+:Step rdf:type owl:Class ;
+      rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+      rdfs:label "Step"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/SubWhiteNoise
+:SubWhiteNoise rdf:type owl:Class ;
+               rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+               rdfs:label "SubWhiteNoise"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/TestAmpl
+:TestAmpl rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "TestAmpl"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/TestRheo
+:TestRheo rdf:type owl:Class ;
+          rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+          rdfs:label "TestRheo"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/TestSpikeRec
+:TestSpikeRec rdf:type owl:Class ;
+              rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+              rdfs:label "TestSpikeRec"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Test_eCode
+:Test_eCode rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "Test_eCode"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/TesteCode
+:TesteCode rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "TesteCode"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/TrueNoise
+:TrueNoise rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+           rdfs:label "TrueNoise"@en ;
+           <http://www.w3.org/2004/02/skos/core#definition> " For the TrueNoise stimulus, sub-threshold white noise current is injected to determine the filter properties of the cell."@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/Truenoise
+:Truenoise rdf:type owl:Class ;
+           rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+           rdfs:label "Truenoise"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/VacuumPulses
+:VacuumPulses rdf:type owl:Class ;
+              rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+              rdfs:label "VacuumPulses"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/WhiteNoise
+:WhiteNoise rdf:type owl:Class ;
+            rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+            rdfs:label "WhiteNoise"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/pulser
+:pulser rdf:type owl:Class ;
+        rdfs:subClassOf <https://neuroshapes.org/LNMCStimulus> ;
+        rdfs:label "pulser"@en .
+
+
+###  http://bbp.epfl.ch/neurosciencegraph/ontologies/stimulustypes/sAHP
+:sAHP rdf:type owl:Class ;
+      rdfs:subClassOf <https://neuroshapes.org/BlueBrainStimulus> ;
+      rdfs:label "sAHP"@en ;
+      <http://www.w3.org/2004/02/skos/core#definition> "The sAHP (small after-hyperpolarization potential) stimulus elicits many action potentials through injection of a sequence of small depolarization currents and is used to measure location and amplitude of the small after-hyperpolarization."@en .
+
+
+###  https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus
+<https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus> rdf:type owl:Class ;
+                                                             rdfs:label "Electrical Stimulus" .
+
+
+###  https://neuroshapes.org/BlueBrainStimulus
+<https://neuroshapes.org/BlueBrainStimulus> rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus> ;
+                                            <http://schema.org/description> "The stimuli under BlueBrainStimulus and their description are based on the eCode Specification v 1.04 document."^^xsd:string ;
+                                            rdfs:label "BlueBrainStimulus"@en .
+
+
+###  https://neuroshapes.org/LNMCStimulus
+<https://neuroshapes.org/LNMCStimulus> rdf:type owl:Class ;
+                                       rdfs:subClassOf <https://bbp.epfl.ch/ontologies/core/bmo/ElectricalStimulus> ;
+                                       <http://schema.org/description> "The stimuli under LNMCStimulus were identified from the NWB files of the \"NMC SSCX\" and the \"Adaptive Stimulus Set\" datasets from the Laboratory of Neural Microcircuitry. They represent the 'raw' stimuli as assigned by the experimenter."^^xsd:string ;
+                                       rdfs:label "LNMCStimulus"@en .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

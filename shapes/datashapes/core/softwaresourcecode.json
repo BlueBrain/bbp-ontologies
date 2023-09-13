@@ -1,0 +1,21 @@
+{
+    "@context": [
+      "https://incf.github.io/neuroshapes/contexts/schema.json",
+      {
+        "this": "https://neuroshapes.org/dash/softwaresourcecode/shapes/"
+      }
+    ],
+    "@id": "https://neuroshapes.org/dash/softwaresourcecode",
+    "@type": "Schema",
+    "imports": [
+      "nsg:commons/softwaresourcecode"
+    ],
+    "shapes": [
+      {
+        "@id": "https://neuroshapes.org/dash/softwaresourcecode/shapes/SoftwareSourceCodeShape",
+        "node": "nsg:commons/softwaresourcecode/shapes/SoftwareSourceCodeShape",
+        "@type": "NodeShape",
+        "targetClass": "schema:SoftwareSourceCode"
+      }
+    ]
+}

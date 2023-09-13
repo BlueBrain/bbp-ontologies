@@ -1,0 +1,73 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/brainparcellationmesh/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/brainparcellationmesh",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/brainlocation",
+    "nsg:commons/distribution"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/brainparcellationmesh/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/brainparcellationmesh/shapes/BrainParcellationMeshShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Brain parcellation mesh location.",
+              "name": "Distribution",
+              "node": "this:BrainParcellationMeshDistributionShape",
+              "path": "schema:distribution"
+            },
+            {
+              "description": "Brain Location (brain region, position In Layer, longitudinalAxis) represented by the mesh",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Brain location",
+              "node": "nsg:commons/brainlocation/shapes/BrainLocationShape",
+              "path": "nsg:brainLocation"
+            }
+          ]
+        }
+      ],
+      "label": "This shape is for describing brain parcellation mesh.",
+      "targetClass": "nsg:BrainParcellationMesh"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/brainparcellationmesh/shapes/BrainParcellationMeshDistributionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/distribution/shapes/DistributionShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Brain parcellation mesh allowed media types",
+              "in": [
+                "application/stl",
+                "application/ply",
+                "application/obj",
+                "application/vtk",
+                "application/binary"
+              ],
+              "name": "Media type",
+              "path": "schema:encodingFormat"
+            }
+          ]
+        }
+      ],
+      "label": "A brain parcellation mesh distribution shape."
+    }
+  ]
+}

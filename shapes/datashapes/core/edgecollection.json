@@ -1,0 +1,51 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/edgecollection/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/edgecollection",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/edgecollection/v0.1.2.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/edgecollection/shapes/EdgeCollectionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "class": "prov:Entity",
+              "description": "Collection of nrn files or syn2.",
+              "editorialNote": "Add media type constraint: application/nrn.",
+              "minCount": 1,
+              "name": "Properties",
+              "path": "nsg:edgePopulation",
+              "seeAlso": "nsg:commons/entity/shapes/EntityShape"
+            },
+            {
+              "class": "nsg:SynapseRelease",
+              "description": "Collection of synapse mod files identified by git hash.",
+              "editorialNote": "Add media type constraint: application/neuron-mod.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Synapse release",
+              "path": "nsg:synapseRelease",
+              "seeAlso": "nsg:dash/synapserelease/shapes/SynapseReleaseShape"
+            }
+          ]
+        }
+      ],
+      "comment": " Elements of the collection defined like Location of nrn synapse file and additional circuit description files: start.ncs and start.target",
+      "label": " Elements of the collection defined like Location of nrn synapse file and additional circuit description files: start.ncs and start.target",
+      "targetClass": "nsg:EdgeCollection"
+    }
+  ]
+}

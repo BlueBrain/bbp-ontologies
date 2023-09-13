@@ -1,0 +1,24 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://provshapes.org/dash/invalidation/shapes/"
+    }
+  ],
+  "@id": "https://provshapes.org/dash/invalidation",
+  "@type": "Schema",
+  "imports": [
+    "https://provshapes.org/commons/invalidation"
+  ],
+  "shapes": [
+    {
+      "@id": "https://provshapes.org/dash/invalidation/shapes/InvalidationShape",
+      "@type": "NodeShape",
+      "comment": "Invalidation is the start of the destruction, cessation, or expiry of an existing entity by an activity. The entity is no longer available for use (or further invalidation) after invalidation. Any generation or usage of an entity precedes its invalidation.",
+      "label": "Entity Invalidation shape",
+      "node": "https://provshapes.org/commons/invalidation/shapes/InvalidationShape",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "prov:Invalidation"
+    }
+  ]
+}

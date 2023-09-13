@@ -1,0 +1,24 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/subject/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/subject",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/subject"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/subject/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/subject/shapes/SubjectShape",
+      "@type": "NodeShape",
+      "comment": "Subject used in experiment",
+      "label": "Subject shape definition",
+      "node": "nsg:commons/subject/shapes/SubjectShape",
+      "targetClass": "nsg:Subject"
+    }
+  ]
+}

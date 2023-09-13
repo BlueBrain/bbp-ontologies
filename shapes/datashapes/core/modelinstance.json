@@ -1,0 +1,23 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/modelinstance/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/modelinstance",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/modelinstance"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/modelinstance/v0.1.2.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/modelinstance/shapes/ModelInstanceShape",
+      "@type": "NodeShape",
+      "label": "A model instance shape",
+      "node": "nsg:commons/modelinstance/shapes/ModelInstanceShape",
+      "targetClass": "nsg:ModelInstance"
+    }
+  ]
+}

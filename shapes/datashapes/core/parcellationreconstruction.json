@@ -1,0 +1,45 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/parcellationreconstruction/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/parcellationreconstruction",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/activity"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/parcellationreconstruction/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/parcellationreconstruction/shapes/ParcellationReconstructionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/activity/shapes/ActivityShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:ParcellationImageData",
+              "description": "Parcellation data",
+              "maxCount": 1,
+              "minCount": 1,
+              "path": "prov:used"
+            },
+            {
+              "class": "nsg:ParcellationVolume",
+              "maxCount": 1,
+              "minCount": 1,
+              "path": "prov:generated"
+            }
+          ]
+        }
+      ],
+      "label": "Parcellation volume reconstruction activity description.",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:ParcellationReconstruction"
+    }
+  ]
+}

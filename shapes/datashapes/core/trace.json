@@ -1,0 +1,50 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/trace/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/trace",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/quantitativevalue",
+    "nsg:commons/typedlabeledontologyterm",
+    "nsg:commons/unit"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/electrophysiology/src/main/resources/schemas/neurosciencegraph/electrophysiology/trace/v1.0.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/trace/shapes/TraceShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:integer",
+              "description": "Recording channel of trace",
+              "maxCount": 1,
+              "name": "Channel",
+              "path": "nsg:channel"
+            },
+            "nsg:commons/unit/shapes/UnitCodePropertyShape",
+            {
+              "description": "Time step (inverted sampling frequency) of data",
+              "maxCount": 1,
+              "name": "Time step",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:timeStep"
+            }
+          ]
+        }
+      ],
+      "label": "Electrophysiology trace shape definition. A trace should have an IRI as identifier",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:Trace"
+    }
+  ]
+}

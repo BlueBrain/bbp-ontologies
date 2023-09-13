@@ -1,0 +1,157 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/annotationselector/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/annotationselector",
+  "@type": "Schema",
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/annotationselector/v0.2.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/annotationselector/shapes/SelectorShape",
+      "@type": "NodeShape",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "seeAlso": "https://www.w3.org/TR/annotation-model/#selectors"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotationselector/shapes/TextPositionSelectorShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:SelectorShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:integer",
+              "description": "The starting position of the segment of text. The first character in the full text is character position 0, and the character is included within the segment.",
+              "lessThan": "oa:end",
+              "maxCount": 1,
+              "minCount": 1,
+              "minInclusive": 0,
+              "name": "Start offset",
+              "path": "oa:start"
+            },
+            {
+              "datatype": "xsd:integer",
+              "description": "The end position of the segment of text. The character is not included within the segment.",
+              "maxCount": 1,
+              "minCount": 1,
+              "minInclusive": 0,
+              "name": "End offset",
+              "path": "oa:end"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "The selected segment of text.",
+              "maxCount": 1,
+              "name": "Value",
+              "path": "schema:value"
+            }
+          ]
+        }
+      ],
+      "class": "oa:TextPositionSelector"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotationselector/shapes/DocumentIndexSelectorShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:SelectorShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:string",
+              "description": "The index of a document media (figure) or item (equation, table,...) (e.g. '1', '2.a', 'III').",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Index",
+              "path": "nsg:index"
+            }
+          ]
+        }
+      ],
+      "class": "nsg:DocumentIndexSelector"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotationselector/shapes/TableSelectorShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:DocumentIndexSelectorShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The number of the row of a table (e.g. '1', '1, 3').",
+              "name": "Row number",
+              "path": "nsg:row"
+            },
+            {
+              "description": "The index(es) in the table of the columns(s) (e.g. '1', '1, 3').",
+              "name": "Column index",
+              "path": "nsg:column"
+            }
+          ]
+        }
+      ],
+      "class": "nsg:TableSelector",
+      "seeAlso": "https://www.w3.org/TR/csv2rdf/"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotationselector/shapes/FragmentSelectorShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:SelectorShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The contents of the fragment component of an IRI that describes the Segment.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Fragment value",
+              "path": "schema:value"
+            },
+            {
+              "description": "Specification of the fragment syntax.",
+              "maxCount": 1,
+              "name": "Fragment specification",
+              "nodeKind": "sh:IRI",
+              "path": "nsg:conformsTo",
+              "seeAlso": "https://www.w3.org/TR/annotation-model/#fragment-selector"
+            }
+          ]
+        }
+      ],
+      "class": "oa:FragmentSelector",
+      "nodeKind": "sh:BlankNodeOrIRI"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotationselector/shapes/DocumentAreaSelectorShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:FragmentSelectorShape"
+        },
+        {
+          "property": [
+            {
+              "comment": "Used format is page=<pagenum>&viewrect=<left>,<top>,<wd>,<ht>. <left>, and <top> are measured from the top left corner of the page.",
+              "hasValue": "http://tools.ietf.org/rfc/rfc3778",
+              "name": "Specification",
+              "path": "nsg:conformsTo"
+            }
+          ]
+        }
+      ],
+      "class": "nsg:PDFAreaSelector",
+      "nodeKind": "sh:BlankNodeOrIRI"
+    }
+  ]
+}

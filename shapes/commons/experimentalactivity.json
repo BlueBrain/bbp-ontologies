@@ -1,0 +1,37 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "@base": "https://neuroshapes.org/commons/experimentalactivity/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/experimentalactivity",
+  "@type": "Schema",
+  "imports": [
+    "https://provshapes.org/commons/activity",
+    "nsg:commons/experimentalprotocol"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/experimentalactivity/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "ExperimentalActivityShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "https://provshapes.org/commons/activity/shapes/ActivityShape"
+        },
+        {
+          "property": [
+            "nsg:commons/experimentalprotocol/shapes/HadProtocolValueShape",
+            {
+              "minCount": 1,
+              "path": "prov:used"
+            }
+          ]
+        }
+      ],
+      "label": "Experimental activity description.",
+      "nodeKind": "sh:BlankNodeOrIRI"
+    }
+  ]
+}

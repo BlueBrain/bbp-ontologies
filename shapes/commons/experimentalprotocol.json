@@ -1,0 +1,122 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/experimentalprotocol/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/experimentalprotocol",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/quantitativevalue",
+    "nsg:commons/protocol",
+    "nsg:commons/identifier",
+    "nsg:commons/typedlabeledontologyterm"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/experimentalprotocol/v0.1.1.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/experimentalprotocol/shapes/ExperimentalProtocolShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/protocol/shapes/ProtocolShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Materials used in protocol",
+              "name": "Materials",
+              "node": "this:MaterialsShape",
+              "path": "nsg:materials"
+            },
+            {
+              "class": "schema:Organization",
+              "description": "Name of vendor of protocol",
+              "name": "Vendor",
+              "path": "nsg:vendor"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Steps of protocol",
+              "name": "Steps",
+              "path": "nsg:steps"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Warning for protocol",
+              "name": "Warning",
+              "path": "nsg:warning"
+            },
+            {
+              "description": "Usable in activity",
+              "name": "Usable in activity",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/ActivityTypeOntologyTermShape",
+              "path": "nsg:activityType"
+            }
+          ]
+        }
+      ],
+      "label": "Protocol shape definition based on protocols.io json schema. The identifier of a protocol should be a valid IRI.",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "seeAlso": "http://apidoc.protocols.io/v3/#reagent-object"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/experimentalprotocol/shapes/MaterialsShape",
+      "@type": "NodeShape",
+      "property": [
+        {
+          "datatype": "xsd:string",
+          "description": "Name of reagent/material used",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Reagent name",
+          "path": "nsg:reagentName"
+        },
+        {
+          "description": "Molar weight of reagent",
+          "maxCount": 1,
+          "name": "Reagent molar weight",
+          "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+          "path": "nsg:reagentMolarWeight"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "Linear formula of reagent",
+          "maxCount": 1,
+          "name": "Reagent linear formula",
+          "path": "nsg:reagentLinearFormula"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "Stock keeping unit of reagent/material",
+          "maxCount": 1,
+          "name": "Reagent SKU",
+          "path": "schema:sku"
+        },
+        {
+          "description": "URL of reagent/material",
+          "maxCount": 1,
+          "name": "Reagent URL",
+          "node": "nsg:commons/identifier/shapes/IdentifierShape",
+          "path": "schema:identifier"
+        },
+        {
+          "class": "schema:Organization",
+          "description": "Name of vendor of reagent",
+          "name": "Reagent vendor",
+          "path": "nsg:reagentVendor"
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/experimentalprotocol/shapes/HadProtocolValueShape",
+      "@type": "PropertyShape",
+      "class": "nsg:ExperimentalProtocol",
+      "description": "The value of nsg:hadProtocol should be of type nsg:ExperimentalProtocol.",
+      "name": "Experimental protocol",
+      "path": "nsg:hadProtocol",
+      "seeAlso": "this:ProtocolShape"
+    }
+  ]
+}

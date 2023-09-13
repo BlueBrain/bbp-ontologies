@@ -1,0 +1,22 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "@base": "https://neuroshapes.org/dash/annotation/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/annotation",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/annotation"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/core/src/main/resources/schemas/neurosciencegraph/core/annotation/v0.2.0.json",
+  "shapes": [
+    {
+      "@id": "AnnotationShape",
+      "@type": "NodeShape",
+      "node": "nsg:commons/annotation/shapes/AnnotationShape",
+      "targetClass": "nsg:Annotation"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/recordseries/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/recordseries",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/recordseries/shapes/RecordSeriesShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "List of measures performed or computed on a system",
+              "minCount": 1,
+              "name": "Record Measure",
+              "path": "nsg:recordMeasure"
+            },
+            {
+              "datatype": "xsd:long",
+              "description": "Number of record in this series",
+              "minCount": 1,
+              "name": "Number Of Records",
+              "path": "nsg:numberOfRecords"
+            },
+            {
+              "datatype": "xsd:long",
+              "description": "Number of byte at the beginning of the file/buffer before the first measure or the first record. Mostly relevant for binary buffers as CSV would usually contain a header.",
+              "name": "Byte Offset",
+              "path": "nsg:byteOffset"
+            },
+            {
+              "description": "Encoding used for the whole series, once uncompressed if any compression method was used.",
+              "in": [
+                "ascii",
+                "binary"
+              ],
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Buffer Encoding",
+              "path": "nsg:bufferEncoding"
+            },
+            {
+              "description": "Endianness of the encoding, not applicable if buffer encoding is ascii",
+              "in": [
+                "little",
+                "big"
+              ],
+              "maxCount": 1,
+              "name": "Endianness",
+              "path": "nsg:endianness"
+            }
+          ]
+        }
+      ],
+      "description": "Definition of a series of records, each record having measures. Files types for this purpose are usually CSV, TSV or binary buffers",
+      "label": "Record Series",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": "nsg:RecordSeries"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/recordseries/shapes/RecordMeasureShape",
+      "@type": "NodeShape",
+      "description": "A measure can be anything",
+      "label": "Record Measure Shape",
+      "property": [
+        {
+          "datatype": "xsd:string",
+          "description": "Name of the measure",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Name",
+          "path": "schema:name"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "Description of what this measure is about",
+          "maxCount": 1,
+          "name": "Description",
+          "path": "schema:description"
+        },
+        {
+          "description": "Type of the value",
+          "in": [
+            "ascii",
+            "uint8",
+            "int8",
+            "uint16",
+            "int16",
+            "uint32",
+            "int32",
+            "uint64",
+            "int64",
+            "float16",
+            "float32",
+            "float64"
+          ],
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Data Type",
+          "path": "nsg:componentEncoding"
+        }
+      ],
+      "targetClass": "nsg:RecordMeasure"
+    }
+  ]
+}

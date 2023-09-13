@@ -1,0 +1,119 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/electrophysiologyfeature/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/electrophysiologyfeature",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/subject",
+    "nsg:commons/entity",
+    "nsg:commons/labeledontologyentity",
+    "nsg:commons/quantitativevalue"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/electrophysiologyfeature/shapes/ElectrophysiologyFeatureShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:Subject",
+              "description": "The subject information (e.g. species).",
+              "name": "Subject",
+              "path": "nsg:subject"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "The e-model",
+              "name": "E-model",
+              "path": "nsg:eModel"
+            },
+            {
+              "description": "The shape of the stimulus",
+              "name": "Stimulus",
+              "node": "this:StimulusShape",
+              "path": "nsg:stimulus"
+            },
+            {
+              "description": "Electrophysiology feature",
+              "name": "Feature",
+              "node": "this:FeatureShape",
+              "path": "nsg:feature"
+            }
+          ]
+        }
+      ],
+      "nodeKind": "sh:IRI",
+      "targetClass": "nsg:ElectrophysiologyFeature"
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/electrophysiologyfeature/shapes/StimulusShape",
+      "@type": "NodeShape",
+      "label": "Stimulus shape definition",
+      "property": [
+        {
+          "maxCount": 1,
+          "name": "Stimulus type",
+          "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape",
+          "path": "nsg:stimulusType"
+        },
+        {
+          "name": "Stimulus target",
+          "path": "nsg:stimulusTarget"
+        },
+        {
+          "datatype": "xsd:string",
+          "maxCount": 1,
+          "path": "nsg:recordingLocation"
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/electrophysiologyfeature/shapes/FeatureShape",
+      "@type": "NodeShape",
+      "label": "Feature shape definition",
+      "property": [
+        {
+          "description": "Feature name",
+          "name": "Feature name",
+          "path": "schema:name"
+        },
+        {
+          "name": "Feature value",
+          "path": "schema:value"
+        },
+        {
+          "name": "Feature series",
+          "node": "this:SeriesShape",
+          "path": "nsg:series"
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/electrophysiologyfeature/shapes/SeriesShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:string",
+              "name": "Statistic",
+              "path": "nsg:statistic"
+            }
+          ]
+        }
+      ],
+      "label": "Series shape definition"
+    }
+  ]
+}

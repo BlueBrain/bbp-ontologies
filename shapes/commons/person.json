@@ -1,0 +1,62 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/person/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/person",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/organization",
+    "nsg:commons/identifier"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/person/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/person/shapes/PersonShape",
+      "@type": "NodeShape",
+      "label": "Schema.org person specification is used as a vocabulary to describe a person.",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "property": [
+        {
+          "datatype": "xsd:string",
+          "name": "Email",
+          "path": "schema:email",
+          "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+        },
+        {
+          "class": "schema:Organization",
+          "name": "Person's affiliation",
+          "node": "nsg:commons/organization/shapes/OrganizationShape",
+          "path": "schema:affiliation"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property.",
+          "name": "givenName",
+          "path": "schema:givenName"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the name property.",
+          "name": "familyName",
+          "path": "schema:familyName"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "An additional name for a Person, can be used for a middle name.",
+          "name": "additionalName",
+          "path": "schema:additionalName"
+        },
+        "nsg:commons/identifier/shapes/WithOrcidIdentifierPropertyShape",
+        {
+          "description": "Person identifiers (e.g orcid)",
+          "name": "Person identifiers",
+          "node": "nsg:commons/identifier/shapes/IdentifierShape",
+          "path": "schema:identifier"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/ontologyentity/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/ontologyentity",
+  "@type": "Schema",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/ontologyentity/shapes/OntologyEntityShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/labeledontologyentity/shapes/LabeledOntologyEntityShape"
+        },
+        {
+          "property": [
+            {
+              "datatype": "xsd:string",
+              "description": "The skos:prefLabel property makes it possible to assign a preferred lexical label to a resource.",
+              "name": "Preferred label",
+              "path": "skos:prefLabel"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "The skos:altLabel property makes it possible to assign an alternative lexical label to a resource. This is especially helpful when assigning labels beyond the one that is preferred for the concept, for instance when synonyms need to be represented.",
+              "name": "Preferred label",
+              "path": "skos:altLabel"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "skos:definition supplies a complete explanation of the intended meaning of a resource.",
+              "name": "Definition",
+              "path": "skos:definition"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Concepts can be created and used as stand-alone entities. However, especially in indexing practice, concepts usually come in carefully compiled vocabularies, such as thesauri or classification schemes. SKOS offers the means of representing such KOSs using the skos:ConceptScheme class.",
+              "name": "Resource's scheme",
+              "path": "skos:inScheme"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "This property allows one to link a concept to the concept scheme containing it.",
+              "name": "Top concept Of",
+              "path": "skos:topConceptOf"
+            }
+          ]
+        }
+      ],
+      "nodeKind": "sh:IRI",
+      "targetClass": [
+        "skos:Concept",
+        "owl:Class"
+      ]
+    }
+  ]
+}

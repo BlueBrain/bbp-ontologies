@@ -1,0 +1,76 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/protocol/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/protocol",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/identifier",
+    "nsg:commons/organization",
+    "nsg:commons/person"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/protocol/v0.1.5.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/protocol/shapes/ProtocolShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The identifier of protocol such as a DOI, ISBN,...",
+              "name": "Identifier",
+              "node": "nsg:commons/identifier/shapes/IdentifierShape",
+              "path": "schema:identifier"
+            },
+            {
+              "datatype": "xsd:dateTime",
+              "description": "Publishing date of protocol.",
+              "maxCount": 1,
+              "name": "date published",
+              "path": "schema:datePublished"
+            },
+            {
+              "description": "Author of the protocol",
+              "name": "Author",
+              "nodeKind": "sh:IRI",
+              "path": "schema:author",
+              "xone": [
+                {
+                  "class": "schema:Person"
+                },
+                {
+                  "class": "schema:Organization"
+                }
+              ]
+            },
+            {
+              "description": "Sub-protocols of the protocol.",
+              "name": "Has part",
+              "path": "schema:hasPart",
+              "seeAlso": "nsg:Protocol"
+            }
+          ]
+        }
+      ],
+      "label": "Protocol shape definition.",
+      "nodeKind": "sh:BlankNodeOrIRI"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/protocol/shapes/HadProtocolValueShape",
+      "@type": "PropertyShape",
+      "class": "nsg:Protocol",
+      "description": "The value of nsg:hadProtocol should be of type nsg:Protocol.",
+      "name": "Protocol",
+      "path": "nsg:hadProtocol",
+      "seeAlso": "this:ProtocolShape"
+    }
+  ]
+}

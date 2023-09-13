@@ -1,0 +1,46 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/morphologydiversification/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/morphologydiversification",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/activity"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/morphologydiversification/v0.2.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/morphologydiversification/shapes/MorphologyDiversificationShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/activity/shapes/ActivityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Morphology diversification used entities.",
+              "minCount": 1,
+              "name": "Morphology diversification used entities",
+              "nodeKind": "sh:IRI",
+              "path": "prov:used"
+            },
+            {
+              "class": "nsg:MorphologyRelease",
+              "description": "Morphology release generated.",
+              "maxCount": 1,
+              "minCount": 1,
+              "path": "prov:generated"
+            }
+          ]
+        }
+      ],
+      "comment": "Morphology diversification: repair, scaling, grafting, mix-and-match, cloning.",
+      "label": "Morphology diversification shape",
+      "targetClass": "nsg:MorphologyDiversification"
+    }
+  ]
+}

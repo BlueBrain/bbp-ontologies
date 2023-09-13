@@ -1,0 +1,71 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/reconstruction/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/reconstruction",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/activity",
+    "nsg:commons/typedlabeledontologyterm"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/morphology/src/main/resources/schemas/neurosciencegraph/morphology/reconstruction/v0.1.1.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/reconstruction/shapes/ReconstructionShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/activity/shapes/ActivityShape"
+        },
+        {
+          "property": [
+            {
+              "description": "Type of objective that was used for the reconstruction such as dry, oil or water.",
+              "maxCount": 1,
+              "name": "Objective type",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/ObjectiveTypeOntologyTermShape",
+              "path": "nsg:objectiveType"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Objective magnification .",
+              "maxCount": 1,
+              "name": "Objective magnification",
+              "path": "nsg:objectiveMagnification"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "Reconstruction compression corrected refers to the correction applied to the cell reconstruction, expected value : x1.25 in Z.",
+              "maxCount": 1,
+              "name": "Reconstruction compression correction",
+              "path": "nsg:compressionCorrection"
+            },
+            {
+              "class": "nsg:LabeledCell",
+              "description": "The labeled cell used for the reconstruction activity",
+              "maxCount": 1,
+              "minCount": 1,
+              "path": "prov:used"
+            },
+            {
+              "class": "nsg:ReconstructedCell",
+              "description": "The reconstructed cell generated",
+              "maxCount": 1,
+              "minCount": 1,
+              "path": "prov:generated"
+            }
+          ]
+        }
+      ],
+      "label": "Reconstruction activities description.",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": [
+        "nsg:Reconstruction",
+        "nsg:NeuronMorphologyReconstruction"
+      ]
+    }
+  ]
+}

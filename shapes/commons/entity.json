@@ -1,0 +1,221 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/entity/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/entity",
+  "@type": "nxv:Schema",
+  "imports": [
+    "https://neuroshapes.org/commons/identifier",
+    "https://neuroshapes.org/commons/license",
+    "https://neuroshapes.org/commons/language",
+    "https://provshapes.org/commons/generation",
+    "https://neuroshapes.org/commons/distribution",
+    "https://provshapes.org/commons/invalidation",
+    "https://provshapes.org/commons/derivation",
+    "https://neuroshapes.org/commons/subject",
+    "https://neuroshapes.org/commons/brainlocation",
+    "https://neuroshapes.org/commons/annotation"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/entity/v1.0.0.json",
+  "shapes": [
+    {
+      "@id": "this:EntityShape",
+      "@type": "sh:NodeShape",
+      "comment": "An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.",
+      "label": "Entity shape",
+      "property": [
+        {
+          "datatype": "xsd:string",
+          "description": "The entity name.",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Name",
+          "path": "schema:name"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "The entity description",
+          "maxCount": 1,
+          "name": "Description",
+          "path": "schema:description"
+        },
+        {
+          "description": "URI of an entity sharing the same identity.",
+          "name": "Same as",
+          "nodeKind": "sh:IRI",
+          "path": "schema:sameAs"
+        },
+        {
+          "description": "The dataset language.",
+          "maxCount": 1,
+          "name": "Language",
+          "node": "https://neuroshapes.org/commons/language/shapes/LanguageShape",
+          "path": "schema:language"
+        },
+        {
+          "description": "Identifier",
+          "name": "Identifier",
+          "node": "https://neuroshapes.org/commons/identifier/shapes/IdentifierShape",
+          "path": "schema:identifier"
+        },
+        {
+          "description": "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.",
+          "name": "Citation",
+          "or": [
+            {
+              "datatype": "xsd:string"
+            },
+            {
+              "nodeKind": "sh:IRI"
+            }
+          ],
+          "path": "schema:citation"
+        },
+        {
+          "class": "nsg:License",
+          "description": "A Link towards the dataset license.",
+          "name": "License",
+          "node": "https://neuroshapes.org/commons/license/shapes/LicenseShape",
+          "path": "schema:license",
+          "seeAlso": "https://github.com/creativecommons/cc.licenserdf"
+        },
+        {
+          "datatype": "xsd:dateTime",
+          "description": "Date at which this entity was created.",
+          "maxCount": 1,
+          "name": "Creation date",
+          "path": "schema:dateCreated"
+        },
+        {
+          "description": "The entity for which this entity is a revision of. An entity revision is a specific type of derivation.",
+          "maxCount": 1,
+          "name": "Revision of",
+          "nodeKind": "sh:IRI",
+          "path": "prov:wasRevisionOf"
+        },
+        {
+          "description": "The entity from which this entity was derived from.",
+          "name": "Derived from",
+          "nodeKind": "sh:IRI",
+          "path": "prov:wasDerivedFrom"
+        },
+        {
+          "description": "A landing page describing the entity.",
+          "name": "URL",
+          "nodeKind": "sh:IRI",
+          "path": "schema:url"
+        },
+        {
+          "datetype": "xsd:dateTime",
+          "description": "The date of the last update of this entity.",
+          "maxCount": 1,
+          "name": "Update date",
+          "path": "schema:dateModified"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "Keywords describing the entity.",
+          "name": "Keywords",
+          "path": "schema:keywords"
+        },
+        {
+          "description": "The agent to which this entity was attributed to.",
+          "name": "Attributed to",
+          "nodeKind": "sh:IRI",
+          "path": "prov:wasAttributedTo"
+        },
+        {
+          "class": "prov:Derivation",
+          "description": "A derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity.",
+          "name": "Qualified Derivation",
+          "nodeKind": "sh:BlankNodeOrIRI",
+          "path": "nsg:derivation",
+          "seeAlso": "https://provshapes.org/commons/derivation/shapes/DerivationShape"
+        },
+        {
+          "class": "nsg:Contribution",
+          "description": "Information about the contribution of an agent during the generation of this dataset.",
+          "name": "Qualified Contribution",
+          "nodeKind": "sh:BlankNodeOrIRI",
+          "path": "nsg:contribution",
+          "seeAlso": "https://neuroshapes.org/commons/contribution/shapes/ContributionShape"
+        },
+        {
+          "class": "prov:Generation",
+          "description": "Generation.",
+          "name": "Qualified Generation",
+          "nodeKind": "sh:BlankNodeOrIRI",
+          "path": "nsg:generation",
+          "seeAlso": "https://provshapes.org/commons/generation/shapes/GenerationShape"
+        },
+        {
+          "class": "prov:Invalidation",
+          "description": "Invalidation.",
+          "name": "Qualified Invalidation",
+          "nodeKind": "sh:BlankNodeOrIRI",
+          "path": "nsg:invalidation",
+          "seeAlso": "https://provshapes.org/commons/invalidation/shapes/InvalidationShape"
+        },
+        {
+          "description": "A reference to an entity representing an image that can be used as preview.",
+          "name": "Preview",
+          "nodeKind": "sh:IRI",
+          "path": "schema:image"
+        },
+        {
+          "class": "schema:DataDownload",
+          "description": "A dataset in downloadable form. The downloadable form has a specific format and is located at a specific location.",
+          "name": "Distribution",
+          "node": "https://neuroshapes.org/commons/distribution/shapes/DistributionShape",
+          "path": "schema:distribution"
+        },
+        {
+            "description": "Sub-parts of the entity.",
+            "name": "Has Part",
+            "path": "schema:hasPart",
+            "nodeKind": "sh:BlankNodeOrIRI"
+        },
+        {
+            "description": "What the entity is a part of.",
+            "name": "Is Part Of",
+            "path": "schema:isPartOf",
+            "nodeKind": "sh:BlankNodeOrIRI"
+        },
+        {
+          "class": "nsg:ObjectOfStudy",
+          "description": "Object of Study",
+          "editorialNote": "The object of study ",
+          "name": "Object of Study",
+          "node": "nsg:commons/typedlabeledontologyterm/shapes/ObjectOfStudyOntologyTermShape",
+          "path": "nsg:objectOfStudy"
+        },
+        {
+          "class": "nsg:Annotation",
+          "description": "Annotations of the dataset.",
+          "name": "Annotation",
+          "node": "nsg:commons/annotation/shapes/AnnotationShape",
+          "path": "nsg:annotation"
+        },
+        {
+          "name": "Atlas Release",
+          "nodeKind": "sh:IRI",
+          "path": "nsg:atlasRelease"
+        },
+        {
+          "class": "nsg:BrainAtlasSpatialReferenceSystem",
+          "nodeKind": "sh:IRI",
+          "path": "nsg:isRegisteredIn"
+        },
+        {
+          "name": "About",
+          "description": "The subject matter of the content.",
+          "nodeKind": "sh:IRI",
+          "path": "schema:about"
+        }
+      ]
+    }
+  ]
+}

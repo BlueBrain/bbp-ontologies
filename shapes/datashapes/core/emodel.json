@@ -1,0 +1,53 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/emodel/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/emodel",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/modelinstance"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/emodel/v0.1.3.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/emodel/shapes/EModelShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/modelinstance/shapes/ModelInstanceShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:SubCellularModel",
+              "description": "SubCellular mechanism",
+              "name": "SubCellular mechanism",
+              "path": "nsg:subCellularMechanism",
+              "seeAlso": "nsg:dash/subcellularmodel/shapes/SubCellularModelShape"
+            },
+            {
+              "class": "nsg:EModelScript",
+              "description": "Script defining neuron model, e.g. a Hoc file, or a zip file containing multiple Hoc files.",
+              "name": "Model script",
+              "path": "nsg:modelScript",
+              "seeAlso": "nsg:dash/emodelscript/shapes/EModelScriptShape"
+            },
+            {
+              "class": "nsg:EModelRelease",
+              "description": "The emodel release (s) this emodel is part of.",
+              "editorialNote": "Can an emodel belongs to multiple release ?",
+              "name": "Part of",
+              "path": "schema:isPartOf"
+            }
+          ]
+        }
+      ],
+      "comment": "An emodel can be queried by what is being modeled (values of modelOf). Values of modelOf: cell type which encapsulates the following info:brain region, etype,mtype, functional type, species",
+      "label": "Emodel shape",
+      "targetClass": "nsg:EModel"
+    }
+  ]
+}

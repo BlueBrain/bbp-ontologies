@@ -1,0 +1,108 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/volumetricdatalayer/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/volumetricdatalayer",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/brainlocation",
+    "nsg:commons/typedlabeledontologyterm",
+    "nsg:dash/ndraster"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/atlas/src/main/resources/schemas/neurosciencegraph/atlas/volumetricdatalayer/v1.0.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/volumetricdatalayer/shapes/VolumetricDataLayerShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:dash/ndraster/shapes/NdRasterShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The morphology type of the reconstructed cell.",
+              "editorialNote": "Need the cell type for class restriction.",
+              "maxCount": 1,
+              "name": "Morphology type",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape",
+              "path": "nsg:mType"
+            },
+            {
+              "class": "nsg:BrainAtlasSpatialReferenceSystem",
+              "maxCount": 1,
+              "path": "nsg:isRegisteredIn"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "The modality of data capture (MRI, fMRI, EM, etc.)",
+              "maxCount": 1,
+              "name": "Image modality",
+              "path": "nsg:imageModality"
+            },
+            {
+              "description": "Brain Location (brain region, atlas space).",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "brain location",
+              "node": "this:BrainLocationShape",
+              "path": "nsg:brainLocation"
+            },
+            {
+              "description": "Resolution of the voxel.",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Resolution",
+              "node": "nsg:commons/quantitativevalue/shapes/QuantitativeValueShape",
+              "path": "nsg:resolution"
+            }
+          ]
+        }
+      ],
+      "label": "Data shape definition for volumetric brain data",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": [
+        "nsg:NdRaster",
+        "nsg:VolumetricDataLayer",
+        "nsg:CellDensityDataLayer",
+        "nsg:PHDataLayer",
+        "nsg:BrainParcellationDataLayer",
+        "nsg:MorphologyOrientationDataLayer",
+        "nsg:NISSLImageDataLayer",
+        "nsg:TwoPhotonImageDataLayer",
+        "nsg:BrainTemplateDataLayer",
+        "nsg:GeneExpressionVolumetricDataLayer",
+        "bmo:METypeDensity",
+        "nsg:GliaCellDensity",
+        "bmo:DirectionVectorsField",
+        "nsg:CellOrientationField",
+        "bmo:BrainParcellationMask",
+        "nsg:PlacementHintsDataLayer"
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/volumetricdatalayer/shapes/BrainLocationShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/brainlocation/shapes/BrainLocationShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:BrainAtlasSpatialReferenceSystem",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Atlas Spatial Reference System",
+              "path": "nsg:atlasSpatialReferenceSystem"
+            }
+          ]
+        }
+      ],
+      "label": "A morphology release distribution shape."
+    }
+  ]
+}

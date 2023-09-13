@@ -1,0 +1,70 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/cellrecordseries/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/cellrecordseries",
+  "@type": "Schema",
+  "imports": [
+    "nsg:dash/recordseries",
+    "nsg:commons/brainlocation",
+    "nsg:commons/typedlabeledontologyterm"
+  ],
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/cellrecordseries/shapes/CellRecordSeriesShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:dash/recordseries/shapes/RecordSeriesShape"
+        },
+        {
+          "property": [
+            {
+              "description": "The morphology type of the reconstructed cell.",
+              "editorialNote": "Need the cell type for class restriction.",
+              "maxCount": 1,
+              "name": "Morphology type",
+              "node": "nsg:commons/typedlabeledontologyterm/shapes/CellTypeOntologyTermShape",
+              "path": "nsg:mType"
+            },
+            {
+              "class": "nsg:BrainAtlasSpatialReferenceSystem",
+              "maxCount": 1,
+              "path": "nsg:isRegisteredIn"
+            }
+          ]
+        }
+      ],
+      "label": "A Record Series for cells",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "targetClass": [
+        "nsg:RecordSeries",
+        "nsg:CellRecordSeries"
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/dash/cellrecordseries/shapes/BrainLocationShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/brainlocation/shapes/BrainLocationShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:BrainAtlasSpatialReferenceSystem",
+              "maxCount": 1,
+              "minCount": 1,
+              "name": "Atlas Spatial Reference System",
+              "path": "nsg:atlasSpatialReferenceSystem"
+            }
+          ]
+        }
+      ],
+      "label": "A morphology release distribution shape."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+    "@context": [
+      "https://incf.github.io/neuroshapes/contexts/schema.json"
+    ],
+    "@id": "https://neuroshapes.org/dash/canonicalmorphologymodel",
+    "@type": "Schema",
+    "imports": [
+      "nsg:commons/entity"
+    ],
+    "shapes": [
+      {
+        "@id": "https://neuroshapes.org/dash/cellcomposition/shapes/CanonicalMorphologyModelShape",
+        "@type": "NodeShape",
+        "and": [
+          {
+            "node": "nsg:commons/entity/shapes/EntityShape"
+          },
+          {
+            "property": [
+              {
+              "maxCount": 1,
+              "minCount": 1,
+              "path": "nsg:atlasRelease"
+               },
+              {
+              "maxCount": 1,
+              "minCount": 1,
+              "path": "schema:about"
+              },
+              {
+                "description": "The model parameters that are accesible to the user.",
+                "minCount": 1,
+                "name": "Morphology model parameter",
+                "class":"bmo:MorphologyModelParameter",
+                "path": "bmo:morphologyModelParameter"
+              },
+              {
+                "description": "The morphology data distribution of the model.",
+                "minCount": 1,
+                "name": "Cell Density composition volume",
+                "class":"bmo:MorphologyModelDistribution",
+                "path": "bmo:morphologyModelDistribution"
+              }
+            ]
+          }
+        ],
+        "label": "CanonicalMorphologyModel shape definition",
+        "nodeKind": "sh:BlankNodeOrIRI",
+        "targetClass": "bmo:CanonicalMorphologyModel"
+      }
+    ]
+  }

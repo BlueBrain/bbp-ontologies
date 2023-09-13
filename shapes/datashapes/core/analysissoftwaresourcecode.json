@@ -1,0 +1,53 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://bbp.epfl.ch/shapes/dash/analysissoftwaresourcecode/shapes/"
+    }
+  ],
+  "@id": "https://bbp.epfl.ch/shapes/dash/analysissoftwaresourcecode",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/softwaresourcecode"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/dash/analysissoftwaresourcecode/shapes/AnalysisSoftwareSourceCodeShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/softwaresourcecode/shapes/SoftwareSourceCodeShape"
+        },
+        {
+          "property": [
+            {
+              "minCount": 1,
+              "path": "schema:codeRepository"
+            },
+            {
+              "minCount": 1,
+              "path": "schema:programmingLanguage"
+            },
+            {
+              "minCount": 1,
+              "path": "bmo:command"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "The name of the folder or subdirectory used, in the case in which the same git repository may contain the code for different analysis.",
+              "name": "Subdirectory",
+              "path": "bmo:subdirectory"
+            },
+            {
+              "description": "Template for the configuration of the analysis.",
+              "name": "Configuration Template",
+              "nodeKind": "sh:BlankNodeOrIRI",
+              "path": "bmo:configurationTemplate"
+            }
+          ]
+        }
+      ],
+      "targetClass": "bmo:AnalysisSoftwareSourceCode"
+    }
+  ]
+}

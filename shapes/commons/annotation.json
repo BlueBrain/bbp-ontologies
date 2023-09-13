@@ -1,0 +1,206 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/annotation/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/annotation",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/entity",
+    "nsg:commons/annotationselector"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/annotation/v0.2.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/annotation/shapes/AnnotationShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/entity/shapes/EntityShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:AnnotationTarget",
+              "description": "The target of an Annotation: the entity being annotated.",
+              "name": "Target",
+              "nodeKind": "sh:BlankNodeOrIRI",
+              "path": "nsg:hasTarget"
+            },
+            {
+              "class": "nsg:AnnotationBody",
+              "description": "The entity or value that the target entity is being annotated with.",
+              "name": "Body",
+              "node": "this:HasBodyShape",
+              "path": "nsg:hasBody"
+            },
+            {
+              "datatype": "xsd:string",
+              "description": "A general note, for any purpose. This could include reasons on which an annotation - such as an mType classification - was based.",
+              "name": "Note",
+              "path": "skos:note"
+            },
+            {
+              "class": "nsg:Motivation",
+              "description": "The relationship between an Annotation and a Motivation that describes the reason for the Annotation's creation.",
+              "name": "Motivation",
+              "nodeKind": "sh:BlankNodeOrIRI",
+              "path": "nsg:motivatedBy",
+              "seeAlso": "http://www.w3.org/ns/oa#motivatedBy"
+            }
+          ]
+        }
+      ],
+      "editorialNote": "The higher level vocabulary (hasTarget, hasBody, hasSource,hasSelector, Annotation) are mapped to the nsg namespace (instead of using oa namespace) for consistency and ease of use purpose. The selector",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "seeAlso": "https://www.w3.org/TR/annotation-model/#introduction"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotation/shapes/SelectorTargetShape",
+      "@type": "NodeShape",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "property": [
+        {
+          "description": "The relationship between a Specific Resource and the resource that it is a more specific representation of.",
+          "maxCount": 1,
+          "minCount": 1,
+          "name": "Source",
+          "path": "nsg:hasSource"
+        },
+        {
+          "description": "The relationship between a Specific Resource and a Selector.",
+          "name": "Selector",
+          "node": "nsg:commons/annotationselector/shapes/SelectorShape",
+          "path": "nsg:hasSelector"
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotation/shapes/TextPositionTargetShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:SelectorTargetShape"
+        },
+        {
+          "property": [
+            {
+              "maxCount": 1,
+              "minCount": 1,
+              "node": "nsg:commons/annotationselector/shapes/TextPositionSelectorShape",
+              "path": "nsg:hasSelector"
+            }
+          ]
+        }
+      ],
+      "class": "nsg:TextPositionTarget"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotation/shapes/FigureTargetShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:SelectorTargetShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:FigureSelector",
+              "maxCount": 1,
+              "minCount": 1,
+              "node": "nsg:commons/annotationselector/shapes/DocumentIndexSelectorShape",
+              "path": "nsg:hasSelector"
+            }
+          ]
+        }
+      ],
+      "nodeKind": "sh:BlankNodeOrIRI"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotation/shapes/EquationTargetShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:SelectorTargetShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:EquationSelector",
+              "maxCount": 1,
+              "minCount": 1,
+              "node": "nsg:commons/annotationselector/shapes/DocumentIndexSelectorShape",
+              "path": "nsg:hasSelector"
+            }
+          ]
+        }
+      ],
+      "nodeKind": "sh:BlankNodeOrIRI"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotation/shapes/TableTargetShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:SelectorTargetShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:TableSelector",
+              "maxCount": 1,
+              "minCount": 1,
+              "node": "nsg:commons/annotationselector/shapes/TableSelectorShape",
+              "path": "nsg:hasSelector"
+            }
+          ]
+        }
+      ],
+      "nodeKind": "sh:BlankNodeOrIRI"
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotation/shapes/HasBodyShape",
+      "@type": "NodeShape",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "property": [
+        {
+          "datatype": "xsd:string",
+          "description": "A general note, for any purpose. This could include reasons on which an annotation - such as an mType classification - was based.",
+          "name": "Note",
+          "path": "skos:note"
+        },
+        {
+          "datatype": "xsd:string",
+          "name": "label",
+          "path": "rdfs:label"
+        },
+        {
+          "nodeKind": "sh:IRI",
+          "path": "rdf:type"
+        }
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/annotation/shapes/AreaTargetShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "this:SelectorTargetShape"
+        },
+        {
+          "property": [
+            {
+              "maxCount": 1,
+              "minCount": 1,
+              "node": "nsg:commons/annotationselector/shapes/DocumentAreaSelectorShape",
+              "path": "nsg:hasSelector"
+            }
+          ]
+        }
+      ],
+      "nodeKind": "sh:BlankNodeOrIRI"
+    }
+  ]
+}

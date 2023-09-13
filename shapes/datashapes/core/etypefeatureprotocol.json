@@ -1,0 +1,47 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/etypefeatureprotocol/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/etypefeatureprotocol",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/modelinstance"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/etypefeatureprotocol/v0.1.2.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/etypefeatureprotocol/shapes/ETypeFeatureProtocolShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/modelinstance/shapes/ModelInstanceShape"
+        },
+        {
+          "property": [
+            {
+              "class": "nsg:EmodelFeatureGeneration",
+              "description": "Generation context.",
+              "maxCount": 1,
+              "name": "Generation",
+              "path": "prov:qualifiedGeneration"
+            },
+            {
+              "class": "prov:Collection",
+              "description": "The entities from which this entity was derived from.",
+              "editorialNote": "The node constraint should be added.",
+              "maxCount": 1,
+              "name": "Was derived from",
+              "path": "prov:wasDerivedFrom"
+            }
+          ]
+        }
+      ],
+      "comment": "When stimulus starts?",
+      "label": "This shape is for e-type extracted features and protocols",
+      "targetClass": "nsg:ETypeFeatureProtocol"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/organization/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/organization",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/identifier"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/commons/src/main/resources/schemas/neurosciencegraph/commons/organization/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/organization/shapes/OrganizationShape",
+      "@type": "NodeShape",
+      "comment": "A schema:Organization can have a GRID identifier.",
+      "label": "A shape for describing an organization based on http://schema.org/Organization.",
+      "nodeKind": "sh:BlankNodeOrIRI",
+      "property": [
+        {
+          "comment": "Removed class or node constraints to avoid recursivity error when validating and when framing with a '@embed':'@link'",
+          "name": "Parent Organization",
+          "path": "schema:parentOrganization"
+        },
+        "nsg:commons/identifier/shapes/WithGridIdentifierPropertyShape",
+        {
+          "datatype": "xsd:string",
+          "name": "Email",
+          "path": "schema:email",
+          "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+        },
+        {
+          "description": "Physical address of the organization.",
+          "name": "Address",
+          "or": [
+            {
+              "node": "this:PostalAddressShape"
+            },
+            {
+              "datatype": "xsd:string"
+            }
+          ],
+          "path": "schema:address"
+        },
+        {
+          "datatype": "xsd:string",
+          "description": "Name of the organization",
+          "name": "Name",
+          "path": "schema:name"
+        }
+      ],
+      "seeAlso": [
+        "schema:Organization",
+        "https://www.grid.ac"
+      ]
+    },
+    {
+      "@id": "https://neuroshapes.org/commons/organization/shapes/PostalAddressShape",
+      "@type": "NodeShape",
+      "property": [
+        {
+          "datatype": "xsd:string",
+          "name": "Fax",
+          "path": "schema:faxNumber"
+        },
+        {
+          "datatype": "xsd:string",
+          "name": "Telephone",
+          "path": "schema:telephone"
+        },
+        {
+          "datatype": "xsd:string",
+          "name": "Country",
+          "path": "schema:addressCountry"
+        },
+        {
+          "datatype": "xsd:string",
+          "name": "Locality",
+          "path": "schema:addressLocality"
+        },
+        {
+          "datatype": "xsd:string",
+          "name": "Postal Code",
+          "path": "schema:postalCode"
+        },
+        {
+          "datatype": "xsd:string",
+          "name": "Street",
+          "path": "schema:streetAddress"
+        }
+      ]
+    }
+  ]
+}

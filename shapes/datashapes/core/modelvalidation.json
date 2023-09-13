@@ -1,0 +1,68 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/dash/modelvalidation/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/dash/modelvalidation",
+  "@type": "Schema",
+  "imports": [
+    "nsg:commons/activity"
+  ],
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/simulation/src/main/resources/schemas/neurosciencegraph/simulation/modelvalidation/v0.2.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/dash/modelvalidation/shapes/ModelValidationShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/activity/shapes/ActivityShape"
+        },
+        {
+          "property": [
+            {
+              "minCount": 2,
+              "path": "prov:used"
+            },
+            {
+              "description": "Used model (to be validated).",
+              "name": "Model",
+              "path": "prov:used",
+              "qualifiedMaxCount": 1,
+              "qualifiedMinCount": 1,
+              "qualifiedValueShape": {
+                "class": "nsg:ModelInstance"
+              },
+              "qualifiedValueShapesDisjoint": true,
+              "seeAlso": "nsg:dash/modelinstance/shapes/ModelInstanceShape"
+            },
+            {
+              "description": "Data (entities) used as reference for validation.",
+              "name": "Reference data",
+              "path": "prov:used",
+              "qualifiedMaxCount": 1,
+              "qualifiedMinCount": 1,
+              "qualifiedValueShape": {
+                "class": "prov:Collection"
+              },
+              "qualifiedValueShapesDisjoint": true,
+              "seeAlso": "nsg:dash/collection/shapes/CollectionShape"
+            },
+            {
+              "class": "nsg:ValidationResult",
+              "description": "Generated validation result.",
+              "minCount": 1,
+              "name": "Result",
+              "path": "prov:generated",
+              "seeAlso": "nsg:dash/validationresult/shapes/ValidationResultShape"
+            }
+          ]
+        }
+      ],
+      "comment": "The analysis strategy/protocol is defined in a protocol.",
+      "label": "Model or simulation report analysis shape",
+      "targetClass": "nsg:ModelValidation"
+    }
+  ]
+}

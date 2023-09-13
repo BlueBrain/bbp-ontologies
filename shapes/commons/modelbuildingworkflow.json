@@ -1,0 +1,53 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://bbp.epfl.ch/shapes/commons/modelbuildingworkflow/shapes/"
+    }
+  ],
+  "@id": "https://bbp.epfl.ch/shapes/commons/modelbuildingworkflow",
+  "@type": "nxv:Schema",
+  "imports": [
+    "https://bbp.epfl.ch/shapes/commons/workflow"
+  ],
+  "shapes": [
+    {
+      "@id": "https://bbp.epfl.ch/shapes/commons/modelbuildingworkflow/shapes/ModelBuildingWorkflowShape",
+      "@type": "NodeShape",
+      "and": [
+        {
+          "node": "nsg:commons/workflow/shapes/WorkflowShape"
+        },
+        {
+          "property": [
+            {
+              "class": "bmo:ModelBrainParameter",
+              "description": "Has Parameter",
+              "name": "Has Parameter",
+              "path": "bmo:hasParameter"
+            },
+            {
+              "class": "prov:SoftwareAgent",
+              "description": "What the workflow is associated with",
+              "name": "Is Associated With",
+              "path": "bmo:isAssociatedWith"
+            },
+            {
+              "class": "bmo:ModelBrainComponent",
+              "description": "What the workflow will generate",
+              "name": "Generates",
+              "path": "bmo:generates"
+            },
+            {
+              "class": "bmo:BrainComponentFeature",
+              "description": "Has Target",
+              "name": "Has Target",
+              "path": "bmo:hasTarget"
+            }
+          ]
+        }
+      ],
+      "label": "Model Building Workflow."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "@context": [
+    "https://incf.github.io/neuroshapes/contexts/schema.json",
+    {
+      "this": "https://neuroshapes.org/commons/propertyvalue/shapes/"
+    }
+  ],
+  "@id": "https://neuroshapes.org/commons/propertyvalue",
+  "@type": "Schema",
+  "prov:wasDerivedFrom": "https://github.com/INCF/neuroshapes/blob/v0.3.15/modules/nexus-schemas/src/main/resources/schemas/nexus/schemaorgsh/propertyvalue/v0.1.0.json",
+  "shapes": [
+    {
+      "@id": "https://neuroshapes.org/commons/propertyvalue/shapes/PropertyValueShape",
+      "@type": "NodeShape",
+      "property": [
+        {
+          "datatype": "xsd:string",
+          "description": "The property name.",
+          "maxCount": 1,
+          "name": "Property ID",
+          "path": "schema:propertyID"
+        },
+        {
+          "description": "The property value.",
+          "maxCount": 1,
+          "name": "Value",
+          "path": "schema:value"
+        }
+      ]
+    }
+  ]
+}
